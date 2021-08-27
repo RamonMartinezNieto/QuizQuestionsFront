@@ -1,0 +1,49 @@
+﻿@page "/Quiz"
+
+<h3>QuestionsQuiz One</h3>
+
+<div class="justify-content-center align-items-center container-fluid text-center container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+
+    <h2 class="m-2">Choose your training</h2>
+
+    <div class="m-3">
+        <label class="m-2 col-form-label" for="categorySelect">Category:</label><br />
+        <!--<select name="category" id="category" class="selectpicker form-control border border-1 border-secondary rounded-3" data-live-search="true" data-size="8" data-width="75%">-->
+        <select @bind="SelectedCategory" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
+            <option value="0" selected disabled>Select the category</option>
+
+            @foreach (CategoryModel a in LoadCategories())
+            {
+                <option value="@a.Id" data-tokens="@a.Name">@a.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group m-3">
+        <label class="m-2" for="questionsRequest">Number of questions:</label><br />
+        <!--<select name="questions" id="questions" class="selectpicker form-control border border-1 border-secondary rounded-3" data-size="8" data-width="75%">-->
+        <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
+            <option value="0" selected disabled>Select number of questions</option>
+
+            @foreach (int time in TimesQuiz)
+            {
+                <option value="@time">@time</option>
+            }
+        </select>
+    </div>
+
+    @if (SelectedCategory == 0 || SelectedNumberOfQuestions == 0)
+    {
+        <NavLink class="nav-link">
+            <button class="btn btn-secondary btn-lg w-25">Start!</button>
+        </NavLink>
+    }
+    else
+    {
+        <NavLink class="nav-link" href="@GetRoute()">
+            <button class="btn btn-primary btn-lg w-25">Start!</button>
+        </NavLink>
+    }
+</div>
+
+

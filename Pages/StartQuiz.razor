@@ -1,0 +1,63 @@
+﻿@page "/StartQuiz/{category:int}/{numberOfQuestions:int}"
+
+
+@if(EndQuizReport){
+    <EndQuiz ListQuestions="@ListQuestions" AnswersList="@AnswersList"></EndQuiz>
+
+} else {
+    <h3>StartQuiz</h3>
+
+    if (!Error.IsError && ShouldRender())
+    {
+    <div class="container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+
+        <div class="text-center">
+            <h3 class="m-2">@CurrentQuestion.Question</h3>
+        </div>
+
+            <Form>
+                <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.ValueAnswer" >
+
+                    @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
+                    {
+                        <Radio Checked="false" TValue="int" Value="answerValue.Value" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
+                    }
+                </RadioGroup>
+
+                <div class="text-center">
+                    @if(IsLastQuestion){
+                        if(IsButtonEnable){
+                            <NavLink class="nav-link" >
+                                <button class="btn btn-danger btn-lg m-3" @onclick="FinishQuiz" enabled >Finish!</button>
+                            </NavLink>
+                            } 
+                            else
+                            {
+                            <NavLink class="nav-link">
+                                <button class="btn btn-danger btn-lg m-3" disabled>Finish!</button>
+                            </NavLink>
+                            }
+                        }
+                    else if(IsButtonEnable)
+                    {
+                        <NavLink class="nav-link">
+                            <button class="btn btn-primary btn-lg m-3" @onclick="NextQuestion" enabled>Next</button>
+                        </NavLink>
+                    } else
+                    {
+                        <NavLink class="nav-link">
+                                <button class="btn btn-primary btn-lg m-3"  disabled>Next</button>
+                        </NavLink>
+                    }
+                </div>
+            </Form>
+
+        <div> Element questionId @_questionAnswer.QuestionId</div>
+        <div> Element choosed @_questionAnswer.ValueAnswer</div>
+    </div>
+    }
+    else
+    {
+        <p>@Error.Message</p>
+    }
+}

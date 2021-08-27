@@ -1,0 +1,27 @@
+﻿@page "/EndQuiz"
+@using Blazorise;
+
+<div class="text-center">
+    <h3 class="m-2 text-color-danger">Wrong Answers</h3>
+</div>
+
+@foreach(QuestionModel question in _questionsFault)
+{
+   <div class="container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+       
+        <div class="text-center">
+            <h3 class="m-2">@question.Question</h3>
+        </div>
+        
+    <ListGroup>
+            <ListGroupItem Color="Color.Success"><span class="oi oi-circle-check" aria-hidden="true"></span>&nbsp;&nbsp;@question.CorrectAnswer</ListGroupItem>
+
+    @foreach(string wrong in question.WrongAnswers){
+        <ListGroupItem Color="Color.Light">
+            <span class="oi oi-circle-x" aria-hidden="true"></span>&nbsp;&nbsp;@wrong
+        </ListGroupItem>
+    }
+    </ListGroup>
+
+</div>
+}
