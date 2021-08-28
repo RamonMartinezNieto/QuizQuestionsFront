@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "e5o5frCwlRxTpzAHwyEX8TVky6jjUgshf7IQsEfGoy/qKRx6t5PFt3ZlboIMvBeZSpPeyTgaNZKZwXjne/DCvQ==",
+  "dgSpecHash": "9W+naOnDYd3CTdNli9vPYLwlYPuyRonJBjIkrpO7wVaxsk9Ct3hD9NzVngbgB1wQkKDGE4mb73Nroy3B+x+Ujg==",
   "success": true,
   "projectFilePath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "C:\\Users\\RMN\\.nuget\\packages\\microsoft.jsinterop.webassembly\\5.0.9\\microsoft.jsinterop.webassembly.5.0.9.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\RMN\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.8\\microsoft.netcore.app.runtime.browser-wasm.5.0.8.nupkg.sha512"
+    "C:\\Users\\RMN\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.9\\microsoft.netcore.app.runtime.browser-wasm.5.0.9.nupkg.sha512"
   ],
   "logs": []
 }

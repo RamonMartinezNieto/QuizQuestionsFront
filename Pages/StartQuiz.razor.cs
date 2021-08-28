@@ -55,7 +55,6 @@ namespace QuizQuestionsFront.Pages
                 //TODO CAMBIAR DE NUEVO PARA USAR LA API
                 //ListQuestions = await GetQuestions();
                 ListQuestions = GetQuestionsMock();
-                SetTimer();
 
                 if (ListQuestions.Any())
                 {
@@ -75,60 +74,6 @@ namespace QuizQuestionsFront.Pages
             }
 
             await base.OnInitializedAsync();
-        }
-
-
-        //Timmer elements, extract to another class? 
-        private int ProgressTimerValue { get; set; } = 0;
-        private DateTime ProgessStartDateTime;
-        private DateTime ProgessCurrentDateTime;
-        private System.Timers.Timer progressTimer;
-        private Blazorise.Color ColorProgressBar { get; set; } = Blazorise.Color.Success;
-        private const int TIME_TO_RESPOND_SECONDS = 1;
-
-        private void SetTimer()
-        {
-            //Empezamos el tiempo
-            ProgessStartDateTime = DateTime.Now;
-            ProgessCurrentDateTime = ProgessStartDateTime;
-
-            progressTimer = new System.Timers.Timer(1000);
-            progressTimer.Elapsed += SetProgressValue;
-            progressTimer.Start();
-        }
-
-        private void SetProgressValue(Object source, ElapsedEventArgs e)
-        {
-            //ProgressTimerValue++;
-            ProgessCurrentDateTime = DateTime.Now;
-
-            int currentSeconds = Convert.ToInt32(Math.Truncate((ProgessCurrentDateTime - ProgessStartDateTime).TotalSeconds));
-            ProgressTimerValue = ((currentSeconds * 100) / TIME_TO_RESPOND_SECONDS);
-
-            if (IsLastQuestion && currentSeconds >= (TIME_TO_RESPOND_SECONDS + 1)) {
-                
-                FinishQuiz();
-            }
-            else if (currentSeconds >= (TIME_TO_RESPOND_SECONDS + 1)) 
-            {
-                NextQuestion();
-            }
-
-            if (ProgressTimerValue < 25)
-                ColorProgressBar = Blazorise.Color.Success;
-            else if (ProgressTimerValue < 75)
-                ColorProgressBar = Blazorise.Color.Info;
-            else
-                ColorProgressBar = Blazorise.Color.Danger;
-
-            StateHasChanged();
-        }
-
-        private void StopTimmer()
-        {
-            progressTimer.Stop();
-            progressTimer.Close();
-            progressTimer.Dispose();
         }
 
         private List<QuestionModel> GetQuestionsMock()
@@ -241,9 +186,6 @@ namespace QuizQuestionsFront.Pages
         private void NextQuestion()
         {
             //TODO Reinicio de cosas 
-            ProgressTimerValue = 0;
-            ProgessStartDateTime = DateTime.Now;
-            ProgessCurrentDateTime = ProgessStartDateTime;
             SaveAnsweredQuestion(_questionAnswer);
             
             _questionSelectedByUser = "0";
@@ -251,7 +193,6 @@ namespace QuizQuestionsFront.Pages
             CurrentQuestionNumber++;
             DisableButton();
             ClearAllRadioButtons();
-
 
 
             if (ListQuestions.Count > (CurrentQuestionNumber))
@@ -299,11 +240,9 @@ namespace QuizQuestionsFront.Pages
 
         private void FinishQuiz()
         {
-            StopTimmer();
             SaveAnsweredQuestion(_questionAnswer);
             EndQuizReport = true;
         }
-
 
         //Obtengo el valor del seleccionado, pero la cosa es que no se como indicar si es el correcto
         private string _questionSelectedByUser;
@@ -311,8 +250,5 @@ namespace QuizQuestionsFront.Pages
         {
             _questionSelectedByUser = new(await JSRuntime.InvokeAsync<string>("CheckRadioButtonSelected"));
         }
-
-        private int GetProgressBarValueQuestions() =>  (((ListQuestions.Count * 100) / ListQuestions.Count) / ListQuestions.Count) * (CurrentQuestionNumber);
-         
     }
 }

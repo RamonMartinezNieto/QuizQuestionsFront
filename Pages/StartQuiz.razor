@@ -56,15 +56,15 @@
         </div>
     </Form>
 
-
-    <Progress Color="@ColorProgressBar" @bind-value="ProgressTimerValue" Animated="true" Striped="true" Margin="Margin.Is2" />
-    <Progress Value="@GetProgressBarValueQuestions()" Animated="true" Margin="Margin.Is2" />
-
+    <CascadingValue Value="CurrentQuestionNumber">
+        <CascadingValue Value="IsLastQuestion">
+            <PersonalizedProgressBarsQuestions FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
+        </CascadingValue>
+    </CascadingValue>
 
     <div> Element questionId @_questionAnswer.QuestionId</div>
     <div> SelectedByUser @_questionAnswer.SelectedByUser</div>
 
-    <div> Element timer current: @(ProgessCurrentDateTime - ProgessStartDateTime) </div>
 </div>
     }
     else

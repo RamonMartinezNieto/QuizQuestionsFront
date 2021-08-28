@@ -469,6 +469,8 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\ref\QuizQuestionsFront.dll
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.pdb
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.csproj.AssemblyReference.cache
+C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\RazorDeclaration\Pages\PersonalizedProgressBarsQuestions.razor.g.cs
+C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\Razor\Pages\PersonalizedProgressBarsQuestions.razor.g.cs
 C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Debug\net5.0\wwwroot\_framework\dotnet.5.0.9.js.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Debug\net5.0\wwwroot\_framework\dotnet.5.0.9.js
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\build-gz\hSV4cZxz.gz
