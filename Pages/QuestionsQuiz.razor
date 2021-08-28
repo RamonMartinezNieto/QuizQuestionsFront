@@ -10,7 +10,7 @@
         <select @bind="SelectedCategory" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
             <option value="0" selected disabled>Select the category</option>
 
-            @foreach (CategoryModel a in LoadCategories())
+            @foreach (CategoryModel a in ListCategories)
             {
                 <option value="@a.Id" data-tokens="@a.Name">@a.Name</option>
             }

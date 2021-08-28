@@ -1,6 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
 using QuizQuestionsFront.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace QuizQuestionsFront.Pages
 {
@@ -8,30 +14,40 @@ namespace QuizQuestionsFront.Pages
     {
         public static readonly int[] TimesQuiz = { 5, 10, 15, 20, 25, 30 };
 
+        [Inject]
+        private IHttpClientFactory ClientFactory { get; set; }
+
         public int SelectedCategory { get; set; }
         public int SelectedNumberOfQuestions { get; set; }
 
-        //TODO get categories from API 
-        public List<CategoryModel> LoadCategories()
+        public List<CategoryModel> ListCategories { get; set; } = new();
+
+        protected override async Task OnInitializedAsync()
         {
-            List<CategoryModel> listCategories = new List<CategoryModel>();
-
-            listCategories.Add(new CategoryModel()
+            if (!ListCategories.Any()) {
+                ListCategories = await LoadCategories();
+            }
+            await base.OnInitializedAsync();
+        }
+        
+        private async Task<List<CategoryModel>> LoadCategories()
+        {
+            var client = ClientFactory.CreateClient("QuestionsApi");
+            try
             {
-                Id = 5,
-                Name = "Java"
-            });
+                var test = await client.GetFromJsonAsync<List<CategoryModel>>($"/Category/Categories", new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
 
-            listCategories.Add(new CategoryModel()
+                return test;
+            }
+            catch (Exception ex)
             {
-                Id = 10,
-                Name = "C#"
-            });
-
-            return listCategories;
+                throw new Exception("exception LoadCategories using RestAPI", ex);
+            }
         }
 
         public string GetRoute() => $"StartQuiz/{SelectedCategory}/{SelectedNumberOfQuestions}";
-
     }
 }
