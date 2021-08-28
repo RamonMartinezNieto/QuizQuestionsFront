@@ -9,7 +9,7 @@ namespace QuizQuestionsFront.Pages
 {
     public partial class PersonalizedProgressBarsQuestions : ComponentBase
     {
-        private const int TIME_TO_RESPOND_SECONDS = 90;
+        private const int TIME_TO_RESPOND_SECONDS = 10;
 
         [CascadingParameter]
         public int CurrentQuestionNumber { get; set; }
@@ -56,7 +56,9 @@ namespace QuizQuestionsFront.Pages
 
             int currentSeconds = Convert.ToInt32(Math.Truncate((ProgessCurrentDateTime - ProgessStartDateTime).TotalSeconds));
             ProgressTimerValue = ((currentSeconds * 100) / TIME_TO_RESPOND_SECONDS);
-                        
+            
+            ColorProgressBar = ChangeColorProgressBar();
+
             if (IsLastQuestion && currentSeconds >= (TIME_TO_RESPOND_SECONDS + 1))
             {
                 StopTimmer();
@@ -68,8 +70,14 @@ namespace QuizQuestionsFront.Pages
                 NextQuestionCallBack.InvokeAsync();
             }
 
-            ChangeColorProgressBar();
             StateHasChanged();
+        }
+        private Blazorise.Color ChangeColorProgressBar() 
+        {
+            if (ProgressTimerValue < 25) return Blazorise.Color.Success;
+            else if (ProgressTimerValue < 75)
+                return Blazorise.Color.Info;
+            return Blazorise.Color.Danger;
         }
 
         private void StopTimmer()
@@ -86,15 +94,6 @@ namespace QuizQuestionsFront.Pages
             ProgessCurrentDateTime = ProgessStartDateTime;
         }
 
-        private void ChangeColorProgressBar() 
-        {
-            if (ProgressTimerValue < 25)
-                ColorProgressBar = Blazorise.Color.Success;
-            else if (ProgressTimerValue < 75)
-                ColorProgressBar = Blazorise.Color.Info;
-            else
-                ColorProgressBar = Blazorise.Color.Danger;
-        }
 
         private int GetProgressBarValueQuestions() => (((NumberOfqustions * 100) / NumberOfqustions) / NumberOfqustions) * (CurrentQuestionNumber);
 
