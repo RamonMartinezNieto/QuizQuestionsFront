@@ -4,12 +4,9 @@
 @if (EndQuizReport)
 {
     <EndQuiz AnswersList="@AnswersList"></EndQuiz>
-
 }
 else
 {
-    <h3>StartQuiz</h3>
-
     if (!Error.IsError && ShouldRender())
     {
         <div class="align-items-center container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
@@ -23,7 +20,7 @@ else
                 <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.SelectedByUser">
                     @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
                     {
-                        <Radio Checked="false" TValue="int" Value="@(Convert.ToInt32(String.Format("{0}{1}", counter, answerValue.Value)))" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
+                        <Radio Checked="false" TValue="int" Value="@answerValue.Value" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
                     }
                 </RadioGroup>
 
@@ -43,7 +40,7 @@ else
 
             <CascadingValue Value="CurrentQuestionNumber">
                 <CascadingValue Value="IsLastQuestion">
-                    <PersonalizedProgressBarsQuestions FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
+                    <PersonalizedProgressBarsQuestions @ref="PersonalizedProgressBar" FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
                 </CascadingValue>
             </CascadingValue>
 
@@ -51,6 +48,7 @@ else
     }
     else
     {
+        <!-- TODO Create error panel or similar -->
         <p>@Error.Message</p>
     }
 }

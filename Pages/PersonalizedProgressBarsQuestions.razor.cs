@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -86,13 +84,12 @@ namespace QuizQuestionsFront.Pages
             progressTimer.Dispose();
         }
 
-        private void ResetVariablesTimmer() 
+        public void ResetVariablesTimmer() 
         {
             ProgressTimerValue = 0;
             ProgessStartDateTime = DateTime.Now;
             ProgessCurrentDateTime = ProgessStartDateTime;
         }
-
 
         private int GetProgressBarValueQuestions() => (((NumberOfqustions * 100) / NumberOfqustions) / NumberOfqustions) * (CurrentQuestionNumber);
 

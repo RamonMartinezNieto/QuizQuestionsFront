@@ -28,25 +28,23 @@ namespace QuizQuestionsFront.Pages
         [Inject]
         private IJSRuntime JSRuntime { get; set; }
 
+        PersonalizedProgressBarsQuestions PersonalizedProgressBar { get; set; }
+
         private bool IsButtonEnable { get; set; } = false;
-
         private List<QuestionModel> ListQuestions { get; set; } = new List<QuestionModel>();
-
         private Dictionary<string, int> ShuffleAnswers { get; set; } = new Dictionary<string, int>();
-
         private QuestionModel CurrentQuestion { get; set; } = new QuestionModel();
-
         private int CurrentQuestionNumber { get; set; } = 0;
-
         private ErrorModel Error { get; set; } = new ErrorModel();
-
-        private List<QuestionAnswer> AnswersList { get; set; } = new List<QuestionAnswer>();//idQuestion, value answer
-
+        private List<QuestionAnswer> AnswersList { get; set; } = new List<QuestionAnswer>();
         private QuestionAnswer _questionAnswer { get; set; } = new QuestionAnswer();
-
         public bool IsLastQuestion { get; private set; } = false;
-
         public bool EndQuizReport { get; private set; } = false;
+
+        private string _questionSelectedByUser;
+
+
+        protected override bool ShouldRender() => _shouldRender;
 
         protected override async Task OnInitializedAsync()
         {
@@ -59,7 +57,7 @@ namespace QuizQuestionsFront.Pages
                 if (ListQuestions.Any())
                 {
                     CurrentQuestion = ListQuestions.First();
-                    ShuffleAnswers = GetUnSortedQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
+                    ShuffleAnswers = GetShuffleQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
                     _questionAnswer.QuestionId = CurrentQuestion.Id;
                     _questionAnswer.QuestionName = CurrentQuestion.Question;
                     _questionAnswer.ShuffleAnswersList = ShuffleAnswers;
@@ -142,9 +140,10 @@ namespace QuizQuestionsFront.Pages
             return questionModels;
         }
 
-        private int counter = 0;
-        public Dictionary<string, int> GetUnSortedQuestions(string correctAnswer, params string[] answers)
+        
+        public Dictionary<string, int> GetShuffleQuestions(string correctAnswer, params string[] answers)
         {
+            int counter = 0;
             Dictionary<string, int> listOfAnswers = new Dictionary<string, int>();
             listOfAnswers.Add(correctAnswer, 1);
             answers.ToList().ForEach(x => listOfAnswers.Add(x, 0));
@@ -161,11 +160,8 @@ namespace QuizQuestionsFront.Pages
 
                 return valueToReturn;
             });
-            counter = 0;
             return listOfAnswers;
         }
-
-        protected override bool ShouldRender() => _shouldRender;
 
         private async Task<List<QuestionModel>> GetQuestions()
         {
@@ -179,26 +175,19 @@ namespace QuizQuestionsFront.Pages
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("exception GettingQuestions using RestAPI", ex);
             }
         }
 
         private void NextQuestion()
         {
-            //TODO Reinicio de cosas 
             SaveAnsweredQuestion(_questionAnswer);
-            
-            _questionSelectedByUser = "0";
-            _questionAnswer.SelectedByUser = 0;
-            CurrentQuestionNumber++;
-            DisableButton();
-            ClearAllRadioButtons();
-
+            ResetNecesaryVariables();
 
             if (ListQuestions.Count > (CurrentQuestionNumber))
             {
                 CurrentQuestion = ListQuestions[CurrentQuestionNumber];
-                ShuffleAnswers = GetUnSortedQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
+                ShuffleAnswers = GetShuffleQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
                 _questionAnswer.QuestionId = CurrentQuestion.Id;
                 _questionAnswer.QuestionName = CurrentQuestion.Question;
 
@@ -206,37 +195,33 @@ namespace QuizQuestionsFront.Pages
             }
         }
 
-        private void SaveAnsweredQuestion(QuestionAnswer answeredQuestion)
+        private void ResetNecesaryVariables()
         {
-            try
+            _questionSelectedByUser = "0";
+            _questionAnswer.SelectedByUser = 0;
+            CurrentQuestionNumber++;
+            IsButtonEnable = false;
+            ClearAllRadioButtons();
+            PersonalizedProgressBar.ResetVariablesTimmer();
+            //Call reset child
+        }
+
+        private async Task ClearAllRadioButtons() => await JSRuntime.InvokeVoidAsync("ClearAllRadioButtons");
+
+        private void SaveAnsweredQuestion(QuestionAnswer answeredQuestion) =>
+            AnswersList.Add(new QuestionAnswer()
             {
-                AnswersList.Add(new QuestionAnswer()
-                {
-                    QuestionId = answeredQuestion.QuestionId,
-                    QuestionName = answeredQuestion.QuestionName,
-                    ShuffleAnswersList = ShuffleAnswers,
-                    SelectedByUser = Convert.ToInt32(_questionSelectedByUser),
-                    CorrecValueAnswer = _questionAnswer.CorrecValueAnswer
-
-                });
-            }
-            catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        private async Task ClearAllRadioButtons()
-        {
-            await JSRuntime.InvokeVoidAsync("ClearAllRadioButtons");
-        }
-
+                QuestionId = answeredQuestion.QuestionId,
+                QuestionName = answeredQuestion.QuestionName,
+                ShuffleAnswersList = ShuffleAnswers,
+                SelectedByUser = Convert.ToInt32(_questionSelectedByUser),
+                CorrecValueAnswer = _questionAnswer.CorrecValueAnswer
+            });
 
         private async void EnableButton() {
             await CheckSelected();
             IsButtonEnable = true;
         }
-
-        private void DisableButton() => IsButtonEnable = false;
 
         private void FinishQuiz()
         {
@@ -244,11 +229,7 @@ namespace QuizQuestionsFront.Pages
             EndQuizReport = true;
         }
 
-        //Obtengo el valor del seleccionado, pero la cosa es que no se como indicar si es el correcto
-        private string _questionSelectedByUser;
-        private async Task CheckSelected()
-        {
+        private async Task CheckSelected() =>
             _questionSelectedByUser = new(await JSRuntime.InvokeAsync<string>("CheckRadioButtonSelected"));
-        }
     }
 }
