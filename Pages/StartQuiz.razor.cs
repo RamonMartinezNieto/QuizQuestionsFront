@@ -8,6 +8,7 @@ using System.Linq;
 using System;
 using QuizQuestionsFront.Models;
 using Microsoft.JSInterop;
+using System.Timers;
 
 namespace QuizQuestionsFront.Pages
 {
@@ -26,21 +27,21 @@ namespace QuizQuestionsFront.Pages
 
         [Inject]
         private IJSRuntime JSRuntime { get; set; }
-        
+
         private bool IsButtonEnable { get; set; } = false;
 
         private List<QuestionModel> ListQuestions { get; set; } = new List<QuestionModel>();
-        
+
         private Dictionary<string, int> ShuffleAnswers { get; set; } = new Dictionary<string, int>();
-        
+
         private QuestionModel CurrentQuestion { get; set; } = new QuestionModel();
-        
+
         private int CurrentQuestionNumber { get; set; } = 0;
-        
+
         private ErrorModel Error { get; set; } = new ErrorModel();
 
-        private Dictionary<int, int> AnswersList { get; set; } = new Dictionary<int, int>();//idQuestion, value answer
-        
+        private List<QuestionAnswer> AnswersList { get; set; } = new List<QuestionAnswer>();//idQuestion, value answer
+
         private QuestionAnswer _questionAnswer { get; set; } = new QuestionAnswer();
 
         public bool IsLastQuestion { get; private set; } = false;
@@ -51,18 +52,20 @@ namespace QuizQuestionsFront.Pages
         {
             try
             {
+                //TODO CAMBIAR DE NUEVO PARA USAR LA API
                 //ListQuestions = await GetQuestions();
-
                 ListQuestions = GetQuestionsMock();
-
+                SetTimer();
 
                 if (ListQuestions.Any())
                 {
                     CurrentQuestion = ListQuestions.First();
                     ShuffleAnswers = GetUnSortedQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
                     _questionAnswer.QuestionId = CurrentQuestion.Id;
+                    _questionAnswer.QuestionName = CurrentQuestion.Question;
+                    _questionAnswer.ShuffleAnswersList = ShuffleAnswers;
                 }
-                
+
                 _shouldRender = true;
             }
             catch (Exception ex)
@@ -70,13 +73,67 @@ namespace QuizQuestionsFront.Pages
                 Error.Message = ex.Message;
                 Error.IsError = true;
             }
-            
+
             await base.OnInitializedAsync();
+        }
+
+
+        //Timmer elements, extract to another class? 
+        private int ProgressTimerValue { get; set; } = 0;
+        private DateTime ProgessStartDateTime;
+        private DateTime ProgessCurrentDateTime;
+        private System.Timers.Timer progressTimer;
+        private Blazorise.Color ColorProgressBar { get; set; } = Blazorise.Color.Success;
+        private const int TIME_TO_RESPOND_SECONDS = 1;
+
+        private void SetTimer()
+        {
+            //Empezamos el tiempo
+            ProgessStartDateTime = DateTime.Now;
+            ProgessCurrentDateTime = ProgessStartDateTime;
+
+            progressTimer = new System.Timers.Timer(1000);
+            progressTimer.Elapsed += SetProgressValue;
+            progressTimer.Start();
+        }
+
+        private void SetProgressValue(Object source, ElapsedEventArgs e)
+        {
+            //ProgressTimerValue++;
+            ProgessCurrentDateTime = DateTime.Now;
+
+            int currentSeconds = Convert.ToInt32(Math.Truncate((ProgessCurrentDateTime - ProgessStartDateTime).TotalSeconds));
+            ProgressTimerValue = ((currentSeconds * 100) / TIME_TO_RESPOND_SECONDS);
+
+            if (IsLastQuestion && currentSeconds >= (TIME_TO_RESPOND_SECONDS + 1)) {
+                
+                FinishQuiz();
+            }
+            else if (currentSeconds >= (TIME_TO_RESPOND_SECONDS + 1)) 
+            {
+                NextQuestion();
+            }
+
+            if (ProgressTimerValue < 25)
+                ColorProgressBar = Blazorise.Color.Success;
+            else if (ProgressTimerValue < 75)
+                ColorProgressBar = Blazorise.Color.Info;
+            else
+                ColorProgressBar = Blazorise.Color.Danger;
+
+            StateHasChanged();
+        }
+
+        private void StopTimmer()
+        {
+            progressTimer.Stop();
+            progressTimer.Close();
+            progressTimer.Dispose();
         }
 
         private List<QuestionModel> GetQuestionsMock()
         {
-            List<QuestionModel> questionModels= new List<QuestionModel>();
+            List<QuestionModel> questionModels = new List<QuestionModel>();
             questionModels.Add(new QuestionModel()
             {
                 Id = 5,
@@ -99,7 +156,7 @@ namespace QuizQuestionsFront.Pages
                     "15 wrong 2",
                     "15 wrong 3",
                 }
-            }); 
+            });
             questionModels.Add(new QuestionModel()
             {
                 Id = 25,
@@ -111,7 +168,7 @@ namespace QuizQuestionsFront.Pages
                     "25 wrong 2",
                     "25 wrong 3",
                 }
-            }); 
+            });
             questionModels.Add(new QuestionModel()
             {
                 Id = 35,
@@ -123,7 +180,7 @@ namespace QuizQuestionsFront.Pages
                     "35 wrong 2",
                     "35 wrong 3",
                 }
-            }); 
+            });
             questionModels.Add(new QuestionModel()
             {
                 Id = 45,
@@ -140,16 +197,26 @@ namespace QuizQuestionsFront.Pages
             return questionModels;
         }
 
-        public Dictionary<string, int> GetUnSortedQuestions(string correctAnswer, params string[] answers) 
+        private int counter = 0;
+        public Dictionary<string, int> GetUnSortedQuestions(string correctAnswer, params string[] answers)
         {
-
             Dictionary<string, int> listOfAnswers = new Dictionary<string, int>();
             listOfAnswers.Add(correctAnswer, 1);
             answers.ToList().ForEach(x => listOfAnswers.Add(x, 0));
 
             Random rand = new Random();
-            listOfAnswers = listOfAnswers.OrderBy(x => rand.Next()).ToDictionary(item => item.Key, item => item.Value);
+            listOfAnswers = listOfAnswers.OrderBy(x => rand.Next()).ToDictionary(item => item.Key, item => {
+                counter++;
+                int valueToReturn = Convert.ToInt32(String.Format("{0}{1}", counter, item.Value));
 
+                if (valueToReturn == 11 || valueToReturn == 21 || valueToReturn == 31 || valueToReturn == 41) 
+                {
+                    _questionAnswer.CorrecValueAnswer = valueToReturn;
+                }
+
+                return valueToReturn;
+            });
+            counter = 0;
             return listOfAnswers;
         }
 
@@ -165,7 +232,7 @@ namespace QuizQuestionsFront.Pages
                     PropertyNameCaseInsensitive = true
                 });
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -173,29 +240,47 @@ namespace QuizQuestionsFront.Pages
 
         private void NextQuestion()
         {
+            //TODO Reinicio de cosas 
+            ProgressTimerValue = 0;
+            ProgessStartDateTime = DateTime.Now;
+            ProgessCurrentDateTime = ProgessStartDateTime;
             SaveAnsweredQuestion(_questionAnswer);
+            
+            _questionSelectedByUser = "0";
+            _questionAnswer.SelectedByUser = 0;
             CurrentQuestionNumber++;
             DisableButton();
             ClearAllRadioButtons();
+
+
 
             if (ListQuestions.Count > (CurrentQuestionNumber))
             {
                 CurrentQuestion = ListQuestions[CurrentQuestionNumber];
                 ShuffleAnswers = GetUnSortedQuestions(CurrentQuestion.CorrectAnswer, CurrentQuestion.WrongAnswers);
                 _questionAnswer.QuestionId = CurrentQuestion.Id;
-                 
+                _questionAnswer.QuestionName = CurrentQuestion.Question;
+
                 if (ListQuestions.Count == (CurrentQuestionNumber + 1)) IsLastQuestion = true;
             }
         }
 
-        private void SaveAnsweredQuestion(QuestionAnswer answeredQuestion) 
+        private void SaveAnsweredQuestion(QuestionAnswer answeredQuestion)
         {
             try
             {
-                AnswersList.Add(answeredQuestion.QuestionId, answeredQuestion.ValueAnswer);
+                AnswersList.Add(new QuestionAnswer()
+                {
+                    QuestionId = answeredQuestion.QuestionId,
+                    QuestionName = answeredQuestion.QuestionName,
+                    ShuffleAnswersList = ShuffleAnswers,
+                    SelectedByUser = Convert.ToInt32(_questionSelectedByUser),
+                    CorrecValueAnswer = _questionAnswer.CorrecValueAnswer
+
+                });
             }
             catch (Exception ex) {
-                throw ex; 
+                throw ex;
             }
         }
 
@@ -204,14 +289,30 @@ namespace QuizQuestionsFront.Pages
             await JSRuntime.InvokeVoidAsync("ClearAllRadioButtons");
         }
 
-        private void EnableButton() => IsButtonEnable = true;
+
+        private async void EnableButton() {
+            await CheckSelected();
+            IsButtonEnable = true;
+        }
 
         private void DisableButton() => IsButtonEnable = false;
 
         private void FinishQuiz()
         {
+            StopTimmer();
             SaveAnsweredQuestion(_questionAnswer);
             EndQuizReport = true;
         }
+
+
+        //Obtengo el valor del seleccionado, pero la cosa es que no se como indicar si es el correcto
+        private string _questionSelectedByUser;
+        private async Task CheckSelected()
+        {
+            _questionSelectedByUser = new(await JSRuntime.InvokeAsync<string>("CheckRadioButtonSelected"));
+        }
+
+        private int GetProgressBarValueQuestions() =>  (((ListQuestions.Count * 100) / ListQuestions.Count) / ListQuestions.Count) * (CurrentQuestionNumber);
+         
     }
 }

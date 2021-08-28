@@ -83,15 +83,15 @@ using QuizQuestionsFront.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\RMN\source\repos\QuizQuestionsFront\_Imports.razor"
-using QuizQuestionsFront.Models;
+#line 11 "C:\Users\RMN\source\repos\QuizQuestionsFront\_Imports.razor"
+using Blazorise;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-using Blazorise;
+#line 12 "C:\Users\RMN\source\repos\QuizQuestionsFront\_Imports.razor"
+using QuizQuestionsFront.Models;
 
 #line default
 #line hidden

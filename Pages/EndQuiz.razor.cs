@@ -1,40 +1,59 @@
 ﻿using Microsoft.AspNetCore.Components;
 using QuizQuestionsFront.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuizQuestionsFront.Pages
 {
+
+    public enum AnswersType { CorrectAnswers, WrongAnswers }
+
     public partial class EndQuiz : ComponentBase
     {
         [Parameter]
-        public List<QuestionModel> ListQuestions { get; set; }
+        public List<QuestionAnswer> AnswersList { get; set; }
 
-        [Parameter]
-        public Dictionary<int, int> AnswersList { get; set; }
+        private List<QuestionAnswer> WrongAnswersList { get; set; } = new List<QuestionAnswer>();
+        
+        private List<QuestionAnswer> CorrectAnswerList { get; set; } = new List<QuestionAnswer>();
 
-        public List<QuestionModel> _questionsFault { get; set; } = new List<QuestionModel>();
+        private List<QuestionAnswer> CurrentList { get; set; } = new List<QuestionAnswer>();
 
-        protected override void OnInitialized()
+        protected override Task OnParametersSetAsync()
         {
-            _questionsFault = GetQuestionsFault();
-            base.OnInitialized();
+            WrongAnswersList = GetAnswers(AnswersType.WrongAnswers);
+            CorrectAnswerList = GetAnswers(AnswersType.CorrectAnswers);
+
+            CurrentList = new List<QuestionAnswer>(AnswersList);
+
+            return base.OnParametersSetAsync();
         }
 
-        private List<QuestionModel> GetQuestionsFault() 
+        private List<QuestionAnswer> GetAnswers(AnswersType answerType)
         {
-            List<QuestionModel> answerFail = new List<QuestionModel>();
-            List<int> listQuestionsWrokng = AnswersList.Where(x => x.Value == 0).Select(x => x.Key).ToList();
-
-            foreach (int questionId in listQuestionsWrokng) 
+            List<QuestionAnswer> listAnswersRequest = new List<QuestionAnswer>();
+            foreach (QuestionAnswer questionAnswer in AnswersList)
             {
-                foreach (QuestionModel question in ListQuestions) 
+                switch (answerType) 
                 {
-                    if(question.Id == questionId) {  answerFail.Add(question); }
+                    case AnswersType.WrongAnswers:
+                        if (questionAnswer.SelectedByUser != questionAnswer.CorrecValueAnswer)
+                            listAnswersRequest.Add(questionAnswer);
+                        break;
+                    case AnswersType.CorrectAnswers:
+                        if (questionAnswer.SelectedByUser == questionAnswer.CorrecValueAnswer)
+                            listAnswersRequest.Add(questionAnswer);
+                        break;
                 }
             }
+            return listAnswersRequest;
+        }
 
-            return answerFail;
+        private void SetListView(List<QuestionAnswer> listToSee) 
+        {
+            CurrentList.Clear();
+            CurrentList = new List<QuestionAnswer>(listToSee);
+            StateHasChanged();
         }
     }
 }

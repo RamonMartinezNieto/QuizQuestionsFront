@@ -1,27 +1,53 @@
 ﻿@page "/EndQuiz"
-@using Blazorise;
 
 <div class="text-center">
-    <h3 class="m-2 text-color-danger">Wrong Answers</h3>
+    <h3 class="m-2 text-color-danger">Report Quiz</h3>
+
+    <Buttons Margin="Margin.Is3">
+        <Button Color="Color.Success" @onclick="() => SetListView(CorrectAnswerList)">Correct Answers</Button>
+        <Button Color="Color.Danger" @onclick="() => SetListView(WrongAnswersList)">Wrong Answers</Button>
+        <Button Color="Color.Info" @onclick="() => SetListView(AnswersList)">All Answers</Button>
+    </Buttons>
 </div>
 
-@foreach(QuestionModel question in _questionsFault)
+@foreach(QuestionAnswer question in CurrentList)
 {
    <div class="container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
        
         <div class="text-center">
-            <h3 class="m-2">@question.Question</h3>
+            <h3 class="m-2">@question.QuestionName</h3>
         </div>
         
-    <ListGroup>
-            <ListGroupItem Color="Color.Success"><span class="oi oi-circle-check" aria-hidden="true"></span>&nbsp;&nbsp;@question.CorrectAnswer</ListGroupItem>
+        <ListGroup>
+            @foreach (KeyValuePair<string, int> questionShfulle in question.ShuffleAnswersList)
+            {
 
-    @foreach(string wrong in question.WrongAnswers){
-        <ListGroupItem Color="Color.Light">
-            <span class="oi oi-circle-x" aria-hidden="true"></span>&nbsp;&nbsp;@wrong
-        </ListGroupItem>
-    }
-    </ListGroup>
-
+                if (questionShfulle.Value == question.CorrecValueAnswer)
+                {
+                    <ListGroupItem Color="Color.Success">
+                        <span class="oi oi-circle-check" aria-hidden="true"></span>&nbsp;&nbsp;@questionShfulle.Key
+                    </ListGroupItem>
+                } else if (question.SelectedByUser == 0) { 
+                    <ListGroupItem Color="Color.Dark">
+                        <span class="oi oi-circle-x" aria-hidden="true"></span>&nbsp;&nbsp;@questionShfulle.Key
+                    </ListGroupItem>
+                }
+                else
+                {
+                    if (question.SelectedByUser == questionShfulle.Value)
+                    {
+                        <ListGroupItem Color="Color.Danger">
+                            <span class="oi oi-circle-x" aria-hidden="true"></span>&nbsp;&nbsp;@questionShfulle.Key
+                        </ListGroupItem>
+                    }
+                    else
+                    {
+                        <ListGroupItem Color="Color.Light">
+                            <span class="oi oi-circle-x" aria-hidden="true"></span>&nbsp;&nbsp;@questionShfulle.Key
+                        </ListGroupItem>
+                    }
+                }
+            }
+        </ListGroup>
 </div>
 }

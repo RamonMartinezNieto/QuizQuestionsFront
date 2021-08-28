@@ -154,13 +154,15 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             );
+            __builder.AddContent(21, 
 #nullable restore
 #line 17 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\QuestionsQuiz.razor"
-__builder.AddContent(21, a.Name);
+                                                             a.Name
 
 #line default
 #line hidden
 #nullable disable
+            );
             __builder.CloseElement();
 #nullable restore
 #line 18 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\QuestionsQuiz.razor"
@@ -214,13 +216,15 @@ __builder.AddContent(21, a.Name);
 #line hidden
 #nullable disable
             );
+            __builder.AddContent(39, 
 #nullable restore
 #line 30 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\QuestionsQuiz.razor"
-__builder.AddContent(39, time);
+                                       time
 
 #line default
 #line hidden
 #nullable disable
+            );
             __builder.CloseElement();
 #nullable restore
 #line 31 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\QuestionsQuiz.razor"

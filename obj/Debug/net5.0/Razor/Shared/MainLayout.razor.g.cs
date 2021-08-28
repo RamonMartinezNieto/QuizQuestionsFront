@@ -115,13 +115,15 @@ using QuizQuestionsFront.Models;
             __builder.OpenElement(12, "div");
             __builder.AddAttribute(13, "class", "content px-4");
             __builder.AddAttribute(14, "b-605daysz1a");
+            __builder.AddContent(15, 
 #nullable restore
 #line 14 "C:\Users\RMN\source\repos\QuizQuestionsFront\Shared\MainLayout.razor"
-__builder.AddContent(15, Body);
+             Body
 
 #line default
 #line hidden
 #nullable disable
+            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
