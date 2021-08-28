@@ -25,9 +25,29 @@ namespace QuizQuestionsFront.Pages
         protected override async Task OnInitializedAsync()
         {
             if (!ListCategories.Any()) {
-                ListCategories = await LoadCategories();
+                //ListCategories = await LoadCategories();
+                ListCategories = CategoriesMock();
             }
             await base.OnInitializedAsync();
+        }
+
+        public List<CategoryModel> CategoriesMock()
+        {
+            List<CategoryModel> listCategories = new List<CategoryModel>();
+
+            listCategories.Add(new CategoryModel()
+            {
+                Id = 5,
+                Name = "Java"
+            });
+
+            listCategories.Add(new CategoryModel()
+            {
+                Id = 10,
+                Name = "C#"
+            });
+
+            return listCategories;
         }
         
         private async Task<List<CategoryModel>> LoadCategories()
@@ -47,7 +67,9 @@ namespace QuizQuestionsFront.Pages
                 throw new Exception("exception LoadCategories using RestAPI", ex);
             }
         }
+        
 
         public string GetRoute() => $"StartQuiz/{SelectedCategory}/{SelectedNumberOfQuestions}";
+
     }
 }

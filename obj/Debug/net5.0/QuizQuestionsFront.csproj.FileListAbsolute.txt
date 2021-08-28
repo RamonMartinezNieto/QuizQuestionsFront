@@ -646,3 +646,4 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\build-gz\pkUUdPma.
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\build-gz\OsZVep3O.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\build-gz\B6TtwWeV.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.csproj.CopyComplete
+C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Debug\net5.0\static.json
