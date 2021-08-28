@@ -1,71 +1,53 @@
 ﻿@page "/StartQuiz/{category:int}/{numberOfQuestions:int}"
 
 
-@if(EndQuizReport){
+@if (EndQuizReport)
+{
     <EndQuiz AnswersList="@AnswersList"></EndQuiz>
 
-} else {
+}
+else
+{
     <h3>StartQuiz</h3>
 
     if (!Error.IsError && ShouldRender())
     {
-<div class="container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+        <div class="align-items-center container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
 
-    <div class="text-center">
-        <h3 class="m-2">@CurrentQuestion.Question</h3>
-    </div>
+            <div class="text-center">
+                <h3 class="m-2">@CurrentQuestion.Question</h3>
+            </div>
 
-    <Form>
-        <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.SelectedByUser">
+            <Form>
 
-            @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
-            {
-                <Radio Checked="false" TValue="int" Value="@(Convert.ToInt32(String.Format("{0}{1}", counter, answerValue.Value)))" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
+                <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.SelectedByUser">
+                    @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
+                    {
+                        <Radio Checked="false" TValue="int" Value="@(Convert.ToInt32(String.Format("{0}{1}", counter, answerValue.Value)))" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
+                    }
+                </RadioGroup>
 
-            }
-        </RadioGroup>
+                <div class="d-flex justify-content-center">
+                    <div class="w-25 m-2">
+                        @if (IsLastQuestion)
+                        {
+                            <Button Size="Size.Medium" Block="true" Color="Color.Success" Disabled="@(!IsButtonEnable)" @onclick="FinishQuiz"> Finish! </Button>
+                        }
+                        else
+                        {
+                            <Button Size="Size.Medium" Block="true" Color="Color.Primary" Disabled="@(!IsButtonEnable)" @onclick="NextQuestion"> Next! </Button>
+                        }
+                    </div>
+                </div>
+            </Form>
 
-        <div class="text-center">
-            @if (IsLastQuestion)
-            {
-                if (IsButtonEnable)
-                {
-                    <NavLink class="nav-link">
-                        <button class="btn btn-danger btn-lg m-3" @onclick="FinishQuiz" enabled>Finish!</button>
-                    </NavLink>
-                }
-                else
-                {
-                    <NavLink class="nav-link">
-                        <button class="btn btn-danger btn-lg m-3" disabled>Finish!</button>
-                    </NavLink>
-                }
-            }
-            else if (IsButtonEnable)
-            {
-                <NavLink class="nav-link">
-                    <button class="btn btn-primary btn-lg m-3" @onclick="NextQuestion" enabled>Next</button>
-                </NavLink>
-            }
-            else
-            {
-                <NavLink class="nav-link">
-                    <button class="btn btn-primary btn-lg m-3" disabled>Next</button>
-                </NavLink>
-            }
+            <CascadingValue Value="CurrentQuestionNumber">
+                <CascadingValue Value="IsLastQuestion">
+                    <PersonalizedProgressBarsQuestions FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
+                </CascadingValue>
+            </CascadingValue>
+
         </div>
-    </Form>
-
-    <CascadingValue Value="CurrentQuestionNumber">
-        <CascadingValue Value="IsLastQuestion">
-            <PersonalizedProgressBarsQuestions FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
-        </CascadingValue>
-    </CascadingValue>
-
-    <div> Element questionId @_questionAnswer.QuestionId</div>
-    <div> SelectedByUser @_questionAnswer.SelectedByUser</div>
-
-</div>
     }
     else
     {

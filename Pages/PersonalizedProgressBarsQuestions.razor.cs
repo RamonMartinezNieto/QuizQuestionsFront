@@ -9,7 +9,7 @@ namespace QuizQuestionsFront.Pages
 {
     public partial class PersonalizedProgressBarsQuestions : ComponentBase
     {
-        private const int TIME_TO_RESPOND_SECONDS = 10;
+        private const int TIME_TO_RESPOND_SECONDS = 90;
 
         [CascadingParameter]
         public int CurrentQuestionNumber { get; set; }
@@ -32,7 +32,6 @@ namespace QuizQuestionsFront.Pages
         private Timer progressTimer;
         private DateTime ProgessStartDateTime;
         private DateTime ProgessCurrentDateTime;
-
 
         protected override async Task OnInitializedAsync()
         {
