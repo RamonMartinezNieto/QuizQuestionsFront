@@ -20,28 +20,31 @@
     <div class="form-group m-3">
         <label class="m-2" for="questionsRequest">Number of questions:</label><br />
         <!--<select name="questions" id="questions" class="selectpicker form-control border border-1 border-secondary rounded-3" data-size="8" data-width="75%">-->
-        <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
-            <option value="0" selected disabled>Select number of questions</option>
+        @if(@IsEnableSelectNumberOfQuestions)
+        {
+            <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
+                <option value="0" selected disabled>Select number of questions</option>
+                @foreach (int numberOfQuestions in ListSelectedNumberOfQuestions)
+                {
+                    <option value="@numberOfQuestions">@numberOfQuestions</option>
+                }
+            </select>
+        } 
+        else {
+            <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50" disabled>
+                <option value="0" selected disabled>Select number of questions</option>
+            </select>
+        }
 
-            @foreach (int time in TimesQuiz)
-            {
-                <option value="@time">@time</option>
-            }
-        </select>
     </div>
 
-    @if (SelectedCategory == 0 || SelectedNumberOfQuestions == 0)
-    {
-        <NavLink class="nav-link">
-            <button class="btn btn-secondary btn-lg w-25">Start!</button>
-        </NavLink>
-    }
-    else
-    {
-        <NavLink class="nav-link" href="@GetRoute()">
-            <button class="btn btn-primary btn-lg w-25">Start!</button>
-        </NavLink>
-    }
+    <div class="d-flex justify-content-center">
+        <div class="w-25 m-2">
+            <Button Type="ButtonType.Link" Size="Size.Medium" Disabled="(SelectedCategory == 0 || SelectedNumberOfQuestions == 0)" Block="true" Color="Color.Primary" To="@GetRoute()"> Start! </Button>
+        </div>
+    </div>
+
+    <Div>Quantity of questions @QuantityOfQuestions</Div> 
 </div>
 
 

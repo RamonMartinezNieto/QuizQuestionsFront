@@ -103,7 +103,7 @@ using QuizQuestionsFront.Models;
             __builder.AddAttribute(1, "class", "text-center");
             __builder.AddMarkupContent(2, "<h3 class=\"m-2 text-color-danger\">Report Quiz</h3>\r\n\r\n    ");
             __builder.OpenComponent<Blazorise.Buttons>(3);
-            __builder.AddAttribute(4, "Margin", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
+            __builder.AddAttribute(4, "Margin", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
 #nullable restore
 #line 6 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                      Margin.Is3
@@ -114,7 +114,7 @@ using QuizQuestionsFront.Models;
             ));
             __builder.AddAttribute(5, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.OpenComponent<Blazorise.Button>(6);
-                __builder2.AddAttribute(7, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(7, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 7 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                        Color.Success
@@ -139,7 +139,7 @@ using QuizQuestionsFront.Models;
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(11, "\r\n        ");
                 __builder2.OpenComponent<Blazorise.Button>(12);
-                __builder2.AddAttribute(13, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(13, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 8 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                        Color.Danger
@@ -164,7 +164,7 @@ using QuizQuestionsFront.Models;
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(17, "\r\n        ");
                 __builder2.OpenComponent<Blazorise.Button>(18);
-                __builder2.AddAttribute(19, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(19, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 9 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                        Color.Info
@@ -205,15 +205,13 @@ using QuizQuestionsFront.Models;
             __builder.AddAttribute(26, "class", "text-center");
             __builder.OpenElement(27, "h3");
             __builder.AddAttribute(28, "class", "m-2");
-            __builder.AddContent(29, 
 #nullable restore
 #line 18 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-                             question.QuestionName
+__builder.AddContent(29, question.QuestionName);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(30, "\r\n        \r\n        ");
@@ -231,7 +229,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
                 __builder2.OpenComponent<Blazorise.ListGroupItem>(33);
-                __builder2.AddAttribute(34, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(34, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 27 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                                           Color.Success
@@ -242,15 +240,13 @@ using QuizQuestionsFront.Models;
                 ));
                 __builder2.AddAttribute(35, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
                     __builder3.AddMarkupContent(36, "<span class=\"oi oi-circle-check\" aria-hidden=\"true\"></span>&nbsp;&nbsp;");
-                    __builder3.AddContent(37, 
 #nullable restore
 #line 28 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-                                                                                                questionShfulle.Key
+__builder3.AddContent(37, questionShfulle.Key);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();
@@ -262,7 +258,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
                 __builder2.OpenComponent<Blazorise.ListGroupItem>(38);
-                __builder2.AddAttribute(39, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(39, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 31 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                                           Color.Dark
@@ -273,15 +269,13 @@ using QuizQuestionsFront.Models;
                 ));
                 __builder2.AddAttribute(40, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
                     __builder3.AddMarkupContent(41, "<span class=\"oi oi-circle-x\" aria-hidden=\"true\"></span>&nbsp;&nbsp;");
-                    __builder3.AddContent(42, 
 #nullable restore
 #line 32 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-                                                                                            questionShfulle.Key
+__builder3.AddContent(42, questionShfulle.Key);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();
@@ -297,7 +291,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
                 __builder2.OpenComponent<Blazorise.ListGroupItem>(43);
-                __builder2.AddAttribute(44, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(44, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 39 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                                               Color.Danger
@@ -308,15 +302,13 @@ using QuizQuestionsFront.Models;
                 ));
                 __builder2.AddAttribute(45, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
                     __builder3.AddMarkupContent(46, "<span class=\"oi oi-circle-x\" aria-hidden=\"true\"></span>&nbsp;&nbsp;");
-                    __builder3.AddContent(47, 
 #nullable restore
 #line 40 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-                                                                                                questionShfulle.Key
+__builder3.AddContent(47, questionShfulle.Key);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();
@@ -330,7 +322,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
                 __builder2.OpenComponent<Blazorise.ListGroupItem>(48);
-                __builder2.AddAttribute(49, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+                __builder2.AddAttribute(49, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 45 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
                                               Color.Light
@@ -341,15 +333,13 @@ using QuizQuestionsFront.Models;
                 ));
                 __builder2.AddAttribute(50, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
                     __builder3.AddMarkupContent(51, "<span class=\"oi oi-circle-x\" aria-hidden=\"true\"></span>&nbsp;&nbsp;");
-                    __builder3.AddContent(52, 
 #nullable restore
 #line 46 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\EndQuiz.razor"
-                                                                                                questionShfulle.Key
+__builder3.AddContent(52, questionShfulle.Key);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();

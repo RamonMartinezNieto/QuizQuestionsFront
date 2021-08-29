@@ -99,7 +99,7 @@ using QuizQuestionsFront.Models;
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenComponent<Blazorise.Progress>(0);
-            __builder.AddAttribute(1, "Color", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
+            __builder.AddAttribute(1, "Color", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.Color>(
 #nullable restore
 #line 1 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                   ColorProgressBar
@@ -108,7 +108,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(2, "Animated", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(2, "Animated", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 1 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                                                                                true
@@ -117,7 +117,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(3, "Striped", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(3, "Striped", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 1 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                                                                                               true
@@ -126,7 +126,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(4, "Margin", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
+            __builder.AddAttribute(4, "Margin", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
 #nullable restore
 #line 1 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                                                                                                             Margin.Is2
@@ -144,11 +144,11 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             );
-            __builder.AddAttribute(6, "valueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => ProgressTimerValue = __value, ProgressTimerValue));
+            __builder.AddAttribute(6, "valueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => ProgressTimerValue = __value, ProgressTimerValue));
             __builder.CloseComponent();
             __builder.AddMarkupContent(7, "\r\n");
             __builder.OpenComponent<Blazorise.Progress>(8);
-            __builder.AddAttribute(9, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32?>(
+            __builder.AddAttribute(9, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32?>(
 #nullable restore
 #line 2 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                   GetProgressBarValueQuestions()
@@ -157,7 +157,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(10, "Animated", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(10, "Animated", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 2 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                                                             true
@@ -166,7 +166,7 @@ using QuizQuestionsFront.Models;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(11, "Margin", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
+            __builder.AddAttribute(11, "Margin", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazorise.IFluentSpacing>(
 #nullable restore
 #line 2 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\PersonalizedProgressBarsQuestions.razor"
                                                                           Margin.Is2

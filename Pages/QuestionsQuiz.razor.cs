@@ -12,21 +12,32 @@ namespace QuizQuestionsFront.Pages
 {
     public partial class QuestionsQuiz : ComponentBase
     {
-        public static readonly int[] TimesQuiz = { 5, 10, 15, 20, 25, 30 };
+        public List<int> ListSelectedNumberOfQuestions = new List<int>();
 
         [Inject]
         private IHttpClientFactory ClientFactory { get; set; }
 
-        public int SelectedCategory { get; set; }
-        public int SelectedNumberOfQuestions { get; set; }
+        private int _selectedCategory = 0;
+        public int SelectedCategory {
+            get => _selectedCategory;
+            set {
+                    _selectedCategory = value;
+                    GetQuantityOfQuestions();
+
+            }
+        }
+
+        private bool IsEnableSelectNumberOfQuestions = false;
+        public int SelectedNumberOfQuestions { get; set; } = 0;
+        public int QuantityOfQuestions { get; set; } = 0;
 
         public List<CategoryModel> ListCategories { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
             if (!ListCategories.Any()) {
-                //ListCategories = await LoadCategories();
-                ListCategories = CategoriesMock();
+                ListCategories = await LoadCategories();
+                //ListCategories = CategoriesMock();
             }
             await base.OnInitializedAsync();
         }
@@ -43,13 +54,34 @@ namespace QuizQuestionsFront.Pages
 
             listCategories.Add(new CategoryModel()
             {
-                Id = 10,
+                Id = 15,
                 Name = "C#"
             });
 
             return listCategories;
         }
-        
+
+        private void GenerateValuesNumberOfQuestions() 
+        {
+            ListSelectedNumberOfQuestions.Clear();
+            int count = 0;
+            while (QuantityOfQuestions > 0)
+            {
+                if (QuantityOfQuestions >= 5)
+                {
+                    count += 5;
+                    ListSelectedNumberOfQuestions.Add(count);
+                    QuantityOfQuestions -= 5;
+                }
+                else
+                {
+                    count += QuantityOfQuestions;
+                    ListSelectedNumberOfQuestions.Add(count);
+                    QuantityOfQuestions -= QuantityOfQuestions;
+                }
+            }
+        }
+
         private async Task<List<CategoryModel>> LoadCategories()
         {
             var client = ClientFactory.CreateClient("QuestionsApi");
@@ -67,7 +99,27 @@ namespace QuizQuestionsFront.Pages
                 throw new Exception("exception LoadCategories using RestAPI", ex);
             }
         }
-        
+
+        private async Task<int> GetQuantityOfQuestions()
+        {
+            Console.WriteLine("call get quantity of questions");
+            var client = ClientFactory.CreateClient("QuestionsApi");
+            try
+            {
+                var intQuantityOfQuestions = await client.GetFromJsonAsync<int>($"/Question/{SelectedCategory}/MaxQuestionsToRequest");
+                QuantityOfQuestions = intQuantityOfQuestions;
+                IsEnableSelectNumberOfQuestions = true;
+                GenerateValuesNumberOfQuestions();
+                StateHasChanged();
+                return intQuantityOfQuestions;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                throw new Exception("exception GetQuantityOfQuestions using RestAPI", ex);
+            }
+        }
 
         public string GetRoute() => $"StartQuiz/{SelectedCategory}/{SelectedNumberOfQuestions}";
 

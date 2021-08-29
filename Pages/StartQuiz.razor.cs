@@ -9,11 +9,13 @@ using System;
 using QuizQuestionsFront.Models;
 using Microsoft.JSInterop;
 using System.Timers;
+using Blazorise;
 
 namespace QuizQuestionsFront.Pages
 {
     public partial class StartQuiz : ComponentBase
     {
+
         private bool _shouldRender = false;
 
         [Parameter]
@@ -49,8 +51,8 @@ namespace QuizQuestionsFront.Pages
         {
             try
             {
-                //ListQuestions = await GetQuestions();
-                ListQuestions = GetQuestionsMock();
+                ListQuestions = await GetQuestions();
+                //ListQuestions = GetQuestionsMock();
 
                 if (ListQuestions.Any())
                 {

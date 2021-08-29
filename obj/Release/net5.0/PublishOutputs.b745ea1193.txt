@@ -12,6 +12,10 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\favicon.ico
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\index.html
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\sample-data\weather.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\scripts\custom.js
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\web.config
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.timezones.blat
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.wasm
@@ -101,6 +105,10 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\favicon.ico.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\index.html.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\sample-data\weather.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\scripts\custom.js.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\web.config.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.timezones.blat.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.wasm.br
@@ -189,6 +197,10 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\favicon.ico.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\index.html.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\sample-data\weather.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\scripts\custom.js.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\web.config.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.timezones.blat.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\dotnet.wasm.gz
