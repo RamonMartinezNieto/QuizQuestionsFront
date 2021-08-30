@@ -17,6 +17,9 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json
@@ -113,6 +116,9 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.br
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json.br
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json.br
@@ -208,6 +214,9 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json.gz
+C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\release\wwwroot\_framework\static.json.gz
 C:\Users\RMN\source\repos\QuizQuestionsFront\release\wwwroot\_framework\static.json.gz

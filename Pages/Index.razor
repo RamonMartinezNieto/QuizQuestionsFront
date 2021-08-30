@@ -7,29 +7,3 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
-
-<h1>Local Storage!</h1>
-
-<input class="form-control" @bind="currentInputValue" />
-<button class="btn btn-secondary" @onclick="Save">Save</button>
-<button class="btn btn-secondary" @onclick="Read">Read</button>
-<button class="btn btn-secondary" @onclick="Delete">Delete</button>
-
-@code {
-  string currentInputValue;
-
-  public async Task Save()
-  {
-    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "item", currentInputValue);
-  }
-
-  public async Task Read()
-  {
-    currentInputValue = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "item");
-  }
-
-  public async Task Delete()
-  {
-    await JSRuntime.InvokeAsync<string>("localStorage.removeItem", "item");
-  }
-}

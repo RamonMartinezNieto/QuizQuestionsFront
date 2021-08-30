@@ -96,7 +96,7 @@ using QuizQuestionsFront.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/StartQuiz/{category:int}/{numberOfQuestions:int}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/StartQuiz/{CategoryName}/{category:int}/{numberOfQuestions:int}")]
     public partial class StartQuiz : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
