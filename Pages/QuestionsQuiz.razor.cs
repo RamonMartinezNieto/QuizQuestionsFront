@@ -1,71 +1,103 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using QuizQuestionsFront.MockDataManualTesting;
 using QuizQuestionsFront.Models;
+using QuizQuestionsFront.Services;
+using QuizQuestionsFront.Services.QuestionsApiRest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Json;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace QuizQuestionsFront.Pages
 {
     public partial class QuestionsQuiz : ComponentBase
     {
-        public List<int> ListSelectedNumberOfQuestions = new List<int>();
-
         [Inject]
         private IHttpClientFactory ClientFactory { get; set; }
+
+        [Inject]
+        public IJSRuntime jSRuntime { get; set; }
+
+        [Inject]
+        private ISessionStorageService SessionStorage { get; set; }
+
+        [Inject]
+        private IRestApiQuestions RestApiQuestions { get; set; }
+
+        private bool IsEnableSelectNumberOfQuestions = false;
+
+        public int SelectedNumberOfQuestions { get; set; } = 0;
+
+        public int QuantityOfQuestions { get; set; } = 0;
+
+        public List<CategoryModel> ListCategories { get; set; } = new();
+
+        public List<int> ListSelectedNumberOfQuestions = new();
+        private string SelectedCategoryName { get; set; } = string.Empty;
 
         private int _selectedCategory = 0;
         public int SelectedCategory {
             get => _selectedCategory;
             set {
-                    _selectedCategory = value;
-                    GetQuantityOfQuestions();
+                _selectedCategory = value;
+                SelectedCategoryName = ListCategories.First(a => a.Id == SelectedCategory).Name;
+                GetQuantityOfQuestions();
             }
         }
 
-        private bool IsEnableSelectNumberOfQuestions = false;
-        public int SelectedNumberOfQuestions { get; set; } = 0;
-        public int QuantityOfQuestions { get; set; } = 0;
-
-        public List<CategoryModel> ListCategories { get; set; } = new();
+        public string GetRoute() => $"StartQuiz/{SelectedCategoryName}/{SelectedCategory}/{SelectedNumberOfQuestions}";
 
         protected override async Task OnInitializedAsync()
         {
             if (!ListCategories.Any()) {
                 if (ConstVariables.IS_DEBUG_MODE)
                 {
-                    ListCategories = CategoriesMock();
+                    ListCategories = MockData.CategoriesMock();
                 }
                 else {
-                    ListCategories = await LoadCategories();
+                    ListCategories = await SessionStorage.ReadCategoryListAsync(jSRuntime);
+
+                    if(!ListCategories.Any())
+                    {
+                        try { 
+                            ListCategories = await RestApiQuestions.LoadCategories(ClientFactory);
+                            SessionStorage.SaveListCategories(jSRuntime, ListCategories);
+                        }catch(Exception ex) { /*TODO Show message ALERT*/ }
+                    }
+                    
                 }
             }
+            StateHasChanged();
             await base.OnInitializedAsync();
         }
 
-        public List<CategoryModel> CategoriesMock()
+        private async void GetQuantityOfQuestions()
         {
-            List<CategoryModel> listCategories = new List<CategoryModel>();
-
-            listCategories.Add(new CategoryModel()
+            if (ConstVariables.IS_DEBUG_MODE) 
             {
-                Id = 5,
-                Name = "Java"
-            });
+                IsEnableSelectNumberOfQuestions = true;
+                QuantityOfQuestions = 10;
+                ListSelectedNumberOfQuestions = MockData.MockGenerateValuesNumberOfQuestions();
+                StateHasChanged();
 
-            listCategories.Add(new CategoryModel()
-            {
-                Id = 15,
-                Name = "C#"
-            });
-
-            return listCategories;
+            } else { 
+                try
+                {
+                    QuantityOfQuestions = await RestApiQuestions.GetQuantityOfQuestions(ClientFactory, SelectedCategory);
+                    GenerateValuesNumberOfQuestions();
+                    IsEnableSelectNumberOfQuestions = true;
+                    StateHasChanged();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("exception GetQuantityOfQuestions using RestAPI", ex);
+                }
+            }
         }
 
-        private void GenerateValuesNumberOfQuestions() 
+        private void GenerateValuesNumberOfQuestions()
         {
             ListSelectedNumberOfQuestions.Clear();
             int count = 0;
@@ -85,57 +117,5 @@ namespace QuizQuestionsFront.Pages
                 }
             }
         }
-
-        private void MockGenerateValuesNumberOfQuestions() 
-        {
-            ListSelectedNumberOfQuestions.Add(5);
-            ListSelectedNumberOfQuestions.Add(10);
-        }
-
-        private async Task<List<CategoryModel>> LoadCategories()
-        {
-            var client = ClientFactory.CreateClient("QuestionsApi");
-            try
-            {
-                var test = await client.GetFromJsonAsync<List<CategoryModel>>($"/Category/Categories", new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-
-                return test;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("exception LoadCategories using RestAPI", ex);
-            }
-        }
-
-        private async Task<int> GetQuantityOfQuestions()
-        {
-            if (ConstVariables.IS_DEBUG_MODE) 
-            {
-                IsEnableSelectNumberOfQuestions = true;
-                QuantityOfQuestions = 10;
-                MockGenerateValuesNumberOfQuestions();
-                StateHasChanged();
-                return 10;
-            }
-            var client = ClientFactory.CreateClient("QuestionsApi");
-            try
-            {
-                var intQuantityOfQuestions = await client.GetFromJsonAsync<int>($"/Question/{SelectedCategory}/MaxQuestionsToRequest");
-                QuantityOfQuestions = intQuantityOfQuestions;
-                GenerateValuesNumberOfQuestions();
-                StateHasChanged();
-                return intQuantityOfQuestions;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("exception GetQuantityOfQuestions using RestAPI", ex);
-            }
-        }
-
-        public string GetRoute() => $"StartQuiz/{SelectedCategory}/{SelectedNumberOfQuestions}";
-
     }
 }

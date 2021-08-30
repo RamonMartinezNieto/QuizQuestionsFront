@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
+using QuizQuestionsFront.Services;
+using QuizQuestionsFront.Services.QuestionsApiRest;
+using QuizQuestionsFront.Services.Storage;
 
 namespace QuizQuestionsFront
 {
@@ -40,6 +39,12 @@ namespace QuizQuestionsFront
             );
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            
+            //Injects
+            builder.Services.AddSingleton<ISessionStorageService, SessionStorageService>();
+            builder.Services.AddSingleton<IRestApiQuestions, RestApiQuestions>();
+            builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
+
 
             builder.RootComponents.Add<App>("#app");
 

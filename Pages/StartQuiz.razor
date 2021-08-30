@@ -1,10 +1,12 @@
-﻿@page "/StartQuiz/{category:int}/{numberOfQuestions:int}"
+﻿@page "/StartQuiz/{CategoryName}/{category:int}/{numberOfQuestions:int}"
 
 
 @if (EndQuizReport)
 {
     <CascadingValue Value="@Category">
-        <EndQuiz AnswersList="@AnswersList"/>
+         <CascadingValue Value="@CategoryName">
+            <EndQuiz AnswersList="@AnswersList"/>
+         </CascadingValue>
     </CascadingValue>
 }
 else

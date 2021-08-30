@@ -96,8 +96,8 @@ using QuizQuestionsFront.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/StartQuiz/{CategoryName}/{category:int}/{numberOfQuestions:int}")]
-    public partial class StartQuiz : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/SessionsTraining")]
+    public partial class SesionsTrainingStorage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
