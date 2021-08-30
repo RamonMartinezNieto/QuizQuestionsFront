@@ -104,6 +104,30 @@ using QuizQuestionsFront.Models;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 18 "C:\Users\RMN\source\repos\QuizQuestionsFront\Pages\Index.razor"
+       
+  string currentInputValue;
+
+  public async Task Save()
+  {
+    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "item", currentInputValue);
+  }
+
+  public async Task Read()
+  {
+    currentInputValue = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "item");
+  }
+
+  public async Task Delete()
+  {
+    await JSRuntime.InvokeAsync<string>("localStorage.removeItem", "item");
+  }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -23,7 +23,6 @@ namespace QuizQuestionsFront.Pages
             set {
                     _selectedCategory = value;
                     GetQuantityOfQuestions();
-
             }
         }
 
@@ -36,8 +35,13 @@ namespace QuizQuestionsFront.Pages
         protected override async Task OnInitializedAsync()
         {
             if (!ListCategories.Any()) {
-                ListCategories = await LoadCategories();
-                //ListCategories = CategoriesMock();
+                if (ConstVariables.IS_DEBUG_MODE)
+                {
+                    ListCategories = CategoriesMock();
+                }
+                else {
+                    ListCategories = await LoadCategories();
+                }
             }
             await base.OnInitializedAsync();
         }
@@ -82,6 +86,12 @@ namespace QuizQuestionsFront.Pages
             }
         }
 
+        private void MockGenerateValuesNumberOfQuestions() 
+        {
+            ListSelectedNumberOfQuestions.Add(5);
+            ListSelectedNumberOfQuestions.Add(10);
+        }
+
         private async Task<List<CategoryModel>> LoadCategories()
         {
             var client = ClientFactory.CreateClient("QuestionsApi");
@@ -102,21 +112,25 @@ namespace QuizQuestionsFront.Pages
 
         private async Task<int> GetQuantityOfQuestions()
         {
-            Console.WriteLine("call get quantity of questions");
+            if (ConstVariables.IS_DEBUG_MODE) 
+            {
+                IsEnableSelectNumberOfQuestions = true;
+                QuantityOfQuestions = 10;
+                MockGenerateValuesNumberOfQuestions();
+                StateHasChanged();
+                return 10;
+            }
             var client = ClientFactory.CreateClient("QuestionsApi");
             try
             {
                 var intQuantityOfQuestions = await client.GetFromJsonAsync<int>($"/Question/{SelectedCategory}/MaxQuestionsToRequest");
                 QuantityOfQuestions = intQuantityOfQuestions;
-                IsEnableSelectNumberOfQuestions = true;
                 GenerateValuesNumberOfQuestions();
                 StateHasChanged();
                 return intQuantityOfQuestions;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-
                 throw new Exception("exception GetQuantityOfQuestions using RestAPI", ex);
             }
         }

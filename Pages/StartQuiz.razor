@@ -3,7 +3,9 @@
 
 @if (EndQuizReport)
 {
-    <EndQuiz AnswersList="@AnswersList"></EndQuiz>
+    <CascadingValue Value="@Category">
+        <EndQuiz AnswersList="@AnswersList"/>
+    </CascadingValue>
 }
 else
 {
@@ -48,8 +50,7 @@ else
     }
     else
     {
-        <!-- TODO Create error panel or similar -->
-        <p>@Error.Message</p>
-        <p>OCURRIO UN ERROR</p>
+        <!-- TODO Create an beratiful container -->
+        <p>LOADING QUIZ</p>
     }
 }

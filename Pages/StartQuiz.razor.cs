@@ -51,8 +51,12 @@ namespace QuizQuestionsFront.Pages
         {
             try
             {
-                ListQuestions = await GetQuestions();
-                //ListQuestions = GetQuestionsMock();
+                if (ConstVariables.IS_DEBUG_MODE) 
+                {
+                    ListQuestions = GetQuestionsMock();
+                } else {
+                    ListQuestions = await GetQuestions();
+                }
 
                 if (ListQuestions.Any())
                 {
