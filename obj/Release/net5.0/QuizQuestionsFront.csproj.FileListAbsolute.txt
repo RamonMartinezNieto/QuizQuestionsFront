@@ -658,3 +658,6 @@ C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Release\net5.0\release\wwwroot\
 C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Release\net5.0\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Release\net5.0\RazorDeclaration\Pages\SesionsTrainingStorage.razor.g.cs
 C:\Users\RMN\source\repos\QuizQuestionsFront\obj\Release\net5.0\Razor\Pages\SesionsTrainingStorage.razor.g.cs
+C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Release\net5.0\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\sample-data\weather.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Release\net5.0\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\blazor.boot.json
+C:\Users\RMN\source\repos\QuizQuestionsFront\bin\Release\net5.0\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\release\wwwroot\_framework\static.json
