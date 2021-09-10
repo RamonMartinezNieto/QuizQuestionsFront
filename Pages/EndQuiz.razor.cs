@@ -40,7 +40,7 @@ namespace QuizQuestionsFront.Pages
             CurrentList = new List<QuestionAnswer>(AnswersList);
 
             //save in local storage
-            Dictionary<int, List<QuestionAnswer>> quizesLocalStorage = await LocalStorage.ReadQuizes(JSRuntime, CategoryName);
+            Dictionary<int, List<QuestionAnswer>> quizesLocalStorage = await LocalStorage.ReadQuizOfCategory(JSRuntime, CategoryName);
             LocalStorage.SaveQuizes(JSRuntime, quizesLocalStorage, AnswersList, CategoryName);
 
             return base.OnParametersSetAsync();

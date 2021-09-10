@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj": {}
+    "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj": {
+    "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
+        "projectUniqueName": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
         "projectName": "QuizQuestionsFront",
-        "projectPath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
+        "projectPath": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
         "packagesPath": "C:\\Users\\RMN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\obj\\",
+        "outputPath": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[0.9.4.3, )"
             },
+            "Blazorise.Components": {
+              "target": "Package",
+              "version": "[0.9.4.4, )"
+            },
             "Blazorise.Icons.FontAwesome": {
               "target": "Package",
               "version": "[0.9.4.3, )"
@@ -83,7 +87,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-              "version": "[5.0.8, 5.0.8]"
+              "version": "[5.0.9, 5.0.9]"
             }
           ],
           "frameworkReferences": {
@@ -91,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

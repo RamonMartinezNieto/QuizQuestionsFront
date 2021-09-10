@@ -11,8 +11,8 @@ namespace QuizQuestionsFront.Services.Storage
     {
         public async Task SaveQuizes(
             IJSRuntime jsRuntime,
-            Dictionary<int, List<QuestionAnswer>> listQuizesSaved, 
-            List<QuestionAnswer> newQuizToSave, 
+            Dictionary<int, List<QuestionAnswer>> listQuizesSaved,
+            List<QuestionAnswer> newQuizToSave,
             string categoryName)
         {
 
@@ -24,7 +24,7 @@ namespace QuizQuestionsFront.Services.Storage
             await jsRuntime.InvokeVoidAsync("localStorage.setItem", $"SavedQuiz:{categoryName}", JsonSerializer.Serialize(listQuizesSaved));
         }
 
-        public async Task<Dictionary<int, List<QuestionAnswer>>> ReadQuizes(IJSRuntime jsRuntime, string categoryName)
+        public async Task<Dictionary<int, List<QuestionAnswer>>> ReadQuizOfCategory(IJSRuntime jsRuntime, string categoryName)
         {
             Dictionary<int, List<QuestionAnswer>> listOfOldQuizs = new();
             string read = await jsRuntime.InvokeAsync<string>("localStorage.getItem", $"SavedQuiz:{categoryName}");
@@ -37,5 +37,23 @@ namespace QuizQuestionsFront.Services.Storage
 
             return listOfOldQuizs;
         }
+
+
+        public async Task<List<string>> GetCategoriesQuizesSaved(IJSRuntime jsRuntime)
+        {
+            List<string> listCategory = new();
+
+            string[] valuesSaved = await jsRuntime.InvokeAsync<string[]>("GetKeysStorage");
+            foreach (string quizSavedCat in valuesSaved)
+            {
+                if (quizSavedCat.StartsWith("SavedQuiz"))
+                {
+                    var splitKey = quizSavedCat.Split(':');
+                    listCategory.Add(splitKey[1]);
+                }
+            }
+            return new(listCategory);
+        }
     }
 }
+

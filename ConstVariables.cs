@@ -7,6 +7,6 @@ namespace QuizQuestionsFront
 {
     public static class ConstVariables
     {
-        public static bool IS_DEBUG_MODE = false;
+        public static bool IS_DEBUG_MODE = true;
     }
 }

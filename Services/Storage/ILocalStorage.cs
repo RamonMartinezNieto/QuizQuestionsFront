@@ -13,6 +13,9 @@ namespace QuizQuestionsFront.Services.Storage
             List<QuestionAnswer> newQuizToSave,
             string categoryName);
 
-        public Task<Dictionary<int, List<QuestionAnswer>>> ReadQuizes(IJSRuntime jsRuntime, string categoryName);
+        public Task<Dictionary<int, List<QuestionAnswer>>> ReadQuizOfCategory(IJSRuntime jsRuntime, string categoryName);
+
+        public Task<List<string>> GetCategoriesQuizesSaved(IJSRuntime jsRuntime);
+
     }
 }

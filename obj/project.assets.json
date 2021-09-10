@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Blazorise/0.9.4.3": {
+      "Blazorise/0.9.4.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "5.0.0",
@@ -41,6 +41,21 @@
           "buildMultiTargeting/Blazorise.Bootstrap.props": {}
         }
       },
+      "Blazorise.Components/0.9.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.4.4",
+          "Blazorise.Snackbar": "0.9.4.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Components.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Components.dll": {}
+        }
+      },
       "Blazorise.Icons.FontAwesome/0.9.4.3": {
         "type": "package",
         "dependencies": {
@@ -53,6 +68,26 @@
         },
         "runtime": {
           "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        }
+      },
+      "Blazorise.Snackbar/0.9.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.4.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Snackbar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Snackbar.props": {}
         }
       },
       "Microsoft.AspNetCore.Authorization/5.0.9": {
@@ -376,7 +411,7 @@
       }
     },
     "net5.0/browser-wasm": {
-      "Blazorise/0.9.4.3": {
+      "Blazorise/0.9.4.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "5.0.0",
@@ -415,6 +450,21 @@
           "buildMultiTargeting/Blazorise.Bootstrap.props": {}
         }
       },
+      "Blazorise.Components/0.9.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.4.4",
+          "Blazorise.Snackbar": "0.9.4.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Components.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Components.dll": {}
+        }
+      },
       "Blazorise.Icons.FontAwesome/0.9.4.3": {
         "type": "package",
         "dependencies": {
@@ -427,6 +477,26 @@
         },
         "runtime": {
           "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        }
+      },
+      "Blazorise.Snackbar/0.9.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.4.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Snackbar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Snackbar.props": {}
         }
       },
       "Microsoft.AspNetCore.Authorization/5.0.9": {
@@ -751,16 +821,16 @@
     }
   },
   "libraries": {
-    "Blazorise/0.9.4.3": {
-      "sha512": "h6y9Vu6II1PB7/Y/4VplB+Tsv2JGUZHiPVFNfMEhNE/IfCndrFQlAvsTiIa3gxCcAxb9vSyHz5gNl6CpHwKRvg==",
+    "Blazorise/0.9.4.4": {
+      "sha512": "4etQ0M3zxYbSe3Hu6Ctrb4ErsJOcJqMKojW7sD/gNVHy89aOq38f54Kw02mnRKWpu1Aaef8iXMcgLSkM9JTSbQ==",
       "type": "package",
-      "path": "blazorise/0.9.4.3",
+      "path": "blazorise/0.9.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Blazorise.png",
         "LICENSE.md",
-        "blazorise.0.9.4.3.nupkg.sha512",
+        "blazorise.0.9.4.4.nupkg.sha512",
         "blazorise.nuspec",
         "build/Blazorise.props",
         "build/Microsoft.AspNetCore.StaticWebAssets.props",
@@ -795,6 +865,23 @@
         "staticwebassets/blazorise.bootstrap.js"
       ]
     },
+    "Blazorise.Components/0.9.4.4": {
+      "sha512": "HJf5va1tChQ9UMxTpG8qY0HOoyU8Lypi5SVFYs0Qkn4yQRCh/Cp+vOirjMzxbOScMHBuyU7XA42CoOpMLZXwPg==",
+      "type": "package",
+      "path": "blazorise.components/0.9.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.components.0.9.4.4.nupkg.sha512",
+        "blazorise.components.nuspec",
+        "lib/net5.0/Blazorise.Components.dll",
+        "lib/net5.0/Blazorise.Components.xml",
+        "lib/net6.0/Blazorise.Components.dll",
+        "lib/net6.0/Blazorise.Components.xml"
+      ]
+    },
     "Blazorise.Icons.FontAwesome/0.9.4.3": {
       "sha512": "S2irD7ZE3vFQVNJ47ZFlvzJ0MEHCfPYGpJVs+0rktO4DPOpCHE39uEAfGzmZFMUkEoUsuIjdUcCEERkaZJI/CQ==",
       "type": "package",
@@ -808,6 +895,28 @@
         "blazorise.icons.fontawesome.nuspec",
         "lib/net5.0/Blazorise.Icons.FontAwesome.dll",
         "lib/net6.0/Blazorise.Icons.FontAwesome.dll"
+      ]
+    },
+    "Blazorise.Snackbar/0.9.4.4": {
+      "sha512": "y6SONyvOTje/Rc6dxczF+ingEN9CA1mxTun5UWVHRcFNeX9ujlk6jgTyENKYx9N3W5sa/Q0WO3OL+Z93HtVvHQ==",
+      "type": "package",
+      "path": "blazorise.snackbar/0.9.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.snackbar.0.9.4.4.nupkg.sha512",
+        "blazorise.snackbar.nuspec",
+        "build/Blazorise.Snackbar.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Snackbar.props",
+        "buildTransitive/Blazorise.Snackbar.props",
+        "lib/net5.0/Blazorise.Snackbar.dll",
+        "lib/net5.0/Blazorise.Snackbar.xml",
+        "lib/net6.0/Blazorise.Snackbar.dll",
+        "lib/net6.0/Blazorise.Snackbar.xml",
+        "staticwebassets/blazorise.snackbar.css"
       ]
     },
     "Microsoft.AspNetCore.Authorization/5.0.9": {
@@ -1355,6 +1464,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Blazorise.Bootstrap >= 0.9.4.3",
+      "Blazorise.Components >= 0.9.4.4",
       "Blazorise.Icons.FontAwesome >= 0.9.4.3",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.9",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.9",
@@ -1369,11 +1479,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
+      "projectUniqueName": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
       "projectName": "QuizQuestionsFront",
-      "projectPath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
+      "projectPath": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
       "packagesPath": "C:\\Users\\RMN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\obj\\",
+      "outputPath": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1410,6 +1520,10 @@
             "target": "Package",
             "version": "[0.9.4.3, )"
           },
+          "Blazorise.Components": {
+            "target": "Package",
+            "version": "[0.9.4.4, )"
+          },
           "Blazorise.Icons.FontAwesome": {
             "target": "Package",
             "version": "[0.9.4.3, )"
@@ -1445,7 +1559,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-            "version": "[5.0.8, 5.0.8]"
+            "version": "[5.0.9, 5.0.9]"
           }
         ],
         "frameworkReferences": {
@@ -1453,7 +1567,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

@@ -18,16 +18,46 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Quiz
             </NavLink>
         </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" @onclick="@ChangeVisible">
+                <span class="oi oi-arrow-circle-bottom" aria-hidden="true"></span> Results
+            </NavLink>
+        </li>
+
+        @if (visible)
+        {
+            <ListGroup Mode="ListGroupMode.Selectable" Border="Border.Is0" @bind-SelectedItem="selectedItem" Flush="true" Background="Background.Transparent" Margin="Margin.Is0">
+
+                @if (ShouldRender())
+                {
+                    @foreach (var item in ListCategoriesQuizesSaved)
+                    {
+                        <ListGroupItem class="nav" Name="first" Border="Border.Is0" Background="Background.Transparent" Color="Color.None" Margin="Margin.Is0">
+                            <!--  Flex="Flex.JustifyContent.Between.AlignItems.Center" -->
+                            <li class="nav-item m-0 p-0">
+                                <NavLink class="nav-link ">
+                                    <span class="oi oi-arrow-circle-bottom"></span>
+                                    @item.category
+                                    <Badge Color="Color.None" Background="Background.Transparent" Pill="true">@item.quices </Badge>
+                                </NavLink>
+                            </li>
+
+                        </ListGroupItem>
+                    }
+                }
+            </ListGroup>
+        }
+
     </ul>
-</div> 
+</div>
+
+
+
 
 @code {
-    private bool collapseNavMenu = false;
+    private string selectedItem = "first";
+    private bool visible = false;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse.show" : "collapse.show";
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    public void ChangeVisible() => visible = !visible;
 }

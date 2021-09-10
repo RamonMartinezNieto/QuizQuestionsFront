@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "e5o5frCwlRxTpzAHwyEX8TVky6jjUgshf7IQsEfGoy/qKRx6t5PFt3ZlboIMvBeZSpPeyTgaNZKZwXjne/DCvQ==",
+  "dgSpecHash": "+eSdj1EpLHtzxpnskJKekyAQf1HB1XMd8WaRQ/SpF2IHAoutknMaKV8eKrdjtiGrtbs1sfSieX9d3xFXnESEkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\RMN\\source\\repos\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
+  "projectFilePath": "F:\\MyHome\\SimpleQuestionsProject\\Front-end\\QuizQuestionsFront\\QuizQuestionsFront.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\RMN\\.nuget\\packages\\blazorise\\0.9.4.3\\blazorise.0.9.4.3.nupkg.sha512",
+    "C:\\Users\\RMN\\.nuget\\packages\\blazorise\\0.9.4.4\\blazorise.0.9.4.4.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\blazorise.bootstrap\\0.9.4.3\\blazorise.bootstrap.0.9.4.3.nupkg.sha512",
+    "C:\\Users\\RMN\\.nuget\\packages\\blazorise.components\\0.9.4.4\\blazorise.components.0.9.4.4.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\blazorise.icons.fontawesome\\0.9.4.3\\blazorise.icons.fontawesome.0.9.4.3.nupkg.sha512",
+    "C:\\Users\\RMN\\.nuget\\packages\\blazorise.snackbar\\0.9.4.4\\blazorise.snackbar.0.9.4.4.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.9\\microsoft.aspnetcore.authorization.5.0.9.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.9\\microsoft.aspnetcore.components.5.0.9.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\5.0.9\\microsoft.aspnetcore.components.analyzers.5.0.9.nupkg.sha512",
@@ -34,7 +36,7 @@
     "C:\\Users\\RMN\\.nuget\\packages\\microsoft.jsinterop.webassembly\\5.0.9\\microsoft.jsinterop.webassembly.5.0.9.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\RMN\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\RMN\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.8\\microsoft.netcore.app.runtime.browser-wasm.5.0.8.nupkg.sha512"
+    "C:\\Users\\RMN\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.9\\microsoft.netcore.app.runtime.browser-wasm.5.0.9.nupkg.sha512"
   ],
   "logs": []
 }
