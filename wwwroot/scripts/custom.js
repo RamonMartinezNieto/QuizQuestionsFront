@@ -14,3 +14,10 @@ function CheckRadioButtonSelected() {
         }
     }
 }
+
+function GetKeysStorage() {
+
+    var values = Object.keys(localStorage);
+
+    return values;
+}

@@ -103,7 +103,7 @@ using QuizQuestionsFront.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/SessionsTraining")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/SessionsTraining/{Category}")]
     public partial class SesionsTrainingStorage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

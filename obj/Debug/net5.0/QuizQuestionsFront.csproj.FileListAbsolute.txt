@@ -1084,7 +1084,6 @@ F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\bin\Debug\net5.0\w
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\bin\Debug\net5.0\wwwroot\_framework\icudt_EFIGS.dat
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\bin\Debug\net5.0\wwwroot\_framework\icudt_no_CJK.dat
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\bin\Debug\net5.0\wwwroot\_framework\dotnet.5.0.9.js
-F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.csproj.AssemblyReference.cache
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.GeneratedMSBuildEditorConfig.editorconfig
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.AssemblyInfoInputs.cache
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.AssemblyInfo.cs
@@ -1334,3 +1333,4 @@ F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\bin\Debug\net5.0\w
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\build-gz\wJLjo4eq.gz
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\build-gz\Ms6PCvl2.gz
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\build-gz\veCmAnOJ.gz
+F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.csproj.AssemblyReference.cache

@@ -110,17 +110,6 @@ using QuizQuestionsFront.Models;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 58 "F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\Shared\NavMenu.razor"
-       
-    private string selectedItem = "first";
-    private bool visible = false;
-
-    public void ChangeVisible() => visible = !visible;
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

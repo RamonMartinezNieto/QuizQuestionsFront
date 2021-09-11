@@ -1,4 +1,19 @@
-﻿@page "/SessionsTraining"
+﻿@page "/SessionsTraining/{Category}"
 
+<h1>@Category</h1>
 
-Hello! 
+<ListGroup Mode="ListGroupMode.Selectable" @bind-SelectedItem="SelectedItem">
+
+    @foreach (KeyValuePair<int, List<QuestionAnswerLocalStorage>> item in ListOfQuizes)
+    {
+        <ListGroupItem Name="@item.Value.First().DateTime.ToString()" Color="GetColor(CountIndex)">
+            Quiz realized on @item.Value.First().DateTime
+        </ListGroupItem>
+
+        CountIndex++;
+    }
+</ListGroup>
+
+<div>
+    @SelectedItem
+</div>

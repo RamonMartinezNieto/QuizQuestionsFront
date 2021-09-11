@@ -36,7 +36,7 @@
                         <ListGroupItem class="nav" Name="first" Border="Border.Is0" Background="Background.Transparent" Color="Color.None" Margin="Margin.Is0">
                             <!--  Flex="Flex.JustifyContent.Between.AlignItems.Center" -->
                             <li class="nav-item m-0 p-0">
-                                <NavLink class="nav-link ">
+                                <NavLink class="nav-link" href="@{@GetRoute(item.category)}">
                                     <span class="oi oi-arrow-circle-bottom"></span>
                                     @item.category
                                     <Badge Color="Color.None" Background="Background.Transparent" Pill="true">@item.quices </Badge>
@@ -49,15 +49,7 @@
             </ListGroup>
         }
 
+
     </ul>
 </div>
 
-
-
-
-@code {
-    private string selectedItem = "first";
-    private bool visible = false;
-
-    public void ChangeVisible() => visible = !visible;
-}

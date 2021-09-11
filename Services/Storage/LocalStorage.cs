@@ -11,8 +11,8 @@ namespace QuizQuestionsFront.Services.Storage
     {
         public async Task SaveQuizes(
             IJSRuntime jsRuntime,
-            Dictionary<int, List<QuestionAnswer>> listQuizesSaved,
-            List<QuestionAnswer> newQuizToSave,
+            Dictionary<int, List<QuestionAnswerLocalStorage>> listQuizesSaved,
+            List<QuestionAnswerLocalStorage> newQuizToSave,
             string categoryName)
         {
 
@@ -24,14 +24,14 @@ namespace QuizQuestionsFront.Services.Storage
             await jsRuntime.InvokeVoidAsync("localStorage.setItem", $"SavedQuiz:{categoryName}", JsonSerializer.Serialize(listQuizesSaved));
         }
 
-        public async Task<Dictionary<int, List<QuestionAnswer>>> ReadQuizOfCategory(IJSRuntime jsRuntime, string categoryName)
+        public async Task<Dictionary<int, List<QuestionAnswerLocalStorage>>> ReadQuizOfCategory(IJSRuntime jsRuntime, string categoryName)
         {
-            Dictionary<int, List<QuestionAnswer>> listOfOldQuizs = new();
+            Dictionary<int, List<QuestionAnswerLocalStorage>> listOfOldQuizs = new();
             string read = await jsRuntime.InvokeAsync<string>("localStorage.getItem", $"SavedQuiz:{categoryName}");
             try
             {
                 if (read != null || !read.Equals(string.Empty))
-                    listOfOldQuizs = JsonSerializer.Deserialize<Dictionary<int, List<QuestionAnswer>>>(read);
+                    listOfOldQuizs = JsonSerializer.Deserialize<Dictionary<int, List<QuestionAnswerLocalStorage>>>(read);
             }
             catch { /*nothing to do*/ }
 
