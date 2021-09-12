@@ -1,13 +1,14 @@
 ﻿@page "/SessionsTraining/{CategoryName}"
 
-<Div Flex="Flex.JustifyContent.Center">
-    <h1>@CategoryName</h1>
-</Div>
 
 @{int count = 0;}
 
 @if (!ShowResultsOfQuiz)
 {
+    <Div Flex="Flex.JustifyContent.Center">
+        <h1>@CategoryName</h1>
+    </Div>
+
     <ListGroup Mode="ListGroupMode.Selectable">
         @foreach (KeyValuePair<int, List<QuestionAnswerLocalStorage>> item in ListOfQuizes)
         {
@@ -20,7 +21,9 @@
 }
 else
 {
-    <Button @onclick="GoBack" Color="Color.Danger">Go back</Button>
+    <div class="fixed-button active">
+        <Button @onclick="GoBack" Color="Color.Danger">Close report</Button>
+    </div>
 
     <CascadingValue Value="@GetCategory()">
         <CascadingValue Value="@CategoryName">

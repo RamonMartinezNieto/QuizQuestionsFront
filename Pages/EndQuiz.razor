@@ -1,13 +1,19 @@
 ﻿@page "/EndQuiz"
 
+<Div Flex="Flex.JustifyContent.Center">
+    <h1>@CategoryName</h1>
+</Div>
+<hr />
 <div class="text-center">
     <h3 class="m-2 text-color-danger">Report Quiz</h3>
 
-    <Buttons Margin="Margin.Is3">
-        <Button Color="Color.Success" @onclick="() => SetListView(CorrectAnswerList)">Correct Answers</Button>
-        <Button Color="Color.Danger" @onclick="() => SetListView(WrongAnswersList)">Wrong Answers</Button>
-        <Button Color="Color.Info" @onclick="() => SetListView(AnswersList)">All Answers</Button>
-    </Buttons>
+    <Div>
+        <Buttons Margin="Margin.Is3">
+            <Button class="text-white-85 size-200" TextWeight="TextWeight.Bold" Color="Color.Success" @onclick="() => SetListView(CorrectAnswerList)">Correct Answers</Button>
+            <Button class="text-white-85 size-200" TextWeight="TextWeight.Bold" Color="Color.Danger" @onclick="() => SetListView(WrongAnswersList)">Wrong Answers</Button>
+            <Button class="text-white-85 size-200" TextWeight="TextWeight.Bold" Color="Color.Info" @onclick="() => SetListView(AnswersList)">All Answers</Button>
+        </Buttons>
+    </Div>
 </div>
 
 @foreach(QuestionAnswer question in CurrentList)

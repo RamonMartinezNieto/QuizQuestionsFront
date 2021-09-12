@@ -1,0 +1,38 @@
+﻿.text-white-85 {
+    color: rgba(255,255,255,.85);
+}
+
+.size-200 {
+    width: 150px;
+}
+
+@media (min-width: 1100px) {
+    .size-200 {
+        width: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .size-200 {
+        width: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .size-200 {
+        width: 100px;
+        font-size:12px;
+    }
+}
+
+.fixed-button {
+    position: fixed;
+    top: 17%;
+    right: 50px;
+    z-index: 9;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse 2s infinite;
+    border-radius: 0.25rem;
+}
