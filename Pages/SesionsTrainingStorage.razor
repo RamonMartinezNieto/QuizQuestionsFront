@@ -1,6 +1,8 @@
 ﻿@page "/SessionsTraining/{CategoryName}"
 
-<h1>@CategoryName</h1>
+<Div Flex="Flex.JustifyContent.Center">
+    <h1>@CategoryName</h1>
+</Div>
 
 @{int count = 0;}
 
@@ -15,13 +17,9 @@
             count++;
         }
     </ListGroup>
-    <div>Item: @SelectedItem</div>
 }
 else
 {
-    <div>Item: @SelectedItem</div>
-
-    <div>Cambiamos de panel</div>
     <Button @onclick="GoBack" Color="Color.Danger">Go back</Button>
 
     <CascadingValue Value="@GetCategory()">
@@ -30,6 +28,3 @@ else
         </CascadingValue>
     </CascadingValue>
 }
-<div>
-    @SelectedItem
-</div>

@@ -1,50 +1,60 @@
 ﻿@page "/Quiz"
 
-<div class="justify-content-center align-items-center container-fluid text-center container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+<Div Flex="Flex.JustifyContent.Center" Border="Border.Is1.Rounded.Is1.Primary" Margin="Margin.Is0" Background="Background.White" class="shadow">
+    <Div class="w-100" Padding="Padding.Is3">
 
-    <h2 class="m-2">Choose your training</h2>
+        <Div Margin="Margin.Is4.FromTop" Flex="Flex.JustifyContent.Center">
+            <h2>Choose your training</h2>
+        </Div>
 
-    <div class="m-3">
-        <label class="m-2 col-form-label" for="categorySelect">Category:</label><br />
-        <!--<select name="category" id="category" class="selectpicker form-control border border-1 border-secondary rounded-3" data-live-search="true" data-size="8" data-width="75%">-->
-        <select @bind="SelectedCategory" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
-            <option value="0" selected disabled>Select the category</option>
+        <Div Margin="Margin.Is1" Flex="Flex.JustifyContent.Center">
+            <div class="m-3 w-50">
+                <label class="m-2 col-form-label" for="categorySelect">Category:</label><br />
+                <!--<select name="category" id="category" class="selectpicker form-control border border-1 border-secondary rounded-3" data-live-search="true" data-size="8" data-width="75%">-->
+                <select @bind="SelectedCategory" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-100">
+                    <option value="0" selected disabled>Select the category</option>
 
-            @foreach (CategoryModel a in ListCategories)
-            {
-                <option value="@a.Id" data-tokens="@a.Name">@a.Name</option>
-            }
-        </select>
-    </div>
+                    @foreach (CategoryModel a in ListCategories)
+                    {
+                        <option value="@a.Id" data-tokens="@a.Name">@a.Name</option>
+                    }
+                </select>
+            </div>
+        </Div>
 
-    <div class="form-group m-3">
-        <label class="m-2" for="questionsRequest">Number of questions:</label><br />
-        <!--<select name="questions" id="questions" class="selectpicker form-control border border-1 border-secondary rounded-3" data-size="8" data-width="75%">-->
-        @if(@IsEnableSelectNumberOfQuestions)
-        {
-            <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50">
-                <option value="0" selected disabled>Select number of questions</option>
-                @foreach (int numberOfQuestions in ListSelectedNumberOfQuestions)
+        <Div Margin="Margin.Is1" Flex="Flex.JustifyContent.Center">
+
+            <div class="form-group m-3 w-50">
+                <label class="m-2" for="questionsRequest">Number of questions:</label><br />
+                <!--<select name="questions" id="questions" class="selectpicker form-control border border-1 border-secondary rounded-3" data-size="8" data-width="75%">-->
+                @if (@IsEnableSelectNumberOfQuestions)
                 {
-                    <option value="@numberOfQuestions">@numberOfQuestions</option>
+                    <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-100">
+                        <option value="0" selected disabled>Select number of questions</option>
+                        @foreach (int numberOfQuestions in ListSelectedNumberOfQuestions)
+                        {
+                            <option value="@numberOfQuestions">@numberOfQuestions</option>
+                        }
+                    </select>
                 }
-            </select>
-        } 
-        else {
-            <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-50" disabled>
-                <option value="0" selected disabled>Select number of questions</option>
-            </select>
-        }
+                else
+                {
+                    <select @bind="SelectedNumberOfQuestions" name="category" id="category" class="form-control-lg border border-1 border-secondary rounded-3 w-100" disabled>
+                        <option value="0" selected disabled>Select number of questions</option>
+                    </select>
+                }
 
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <div class="w-25 m-2">
-            <Button Type="ButtonType.Link" Size="Size.Medium" Disabled="(SelectedCategory == 0 || SelectedNumberOfQuestions == 0)" Block="true" Color="Color.Primary" To="@GetRoute()"> Start! </Button>
-        </div>
-    </div>
-
-    <Div>Quantity of questions @QuantityOfQuestions</Div> 
-</div>
+            </div>
+        </Div>
 
 
+            <div class="d-flex justify-content-center">
+                <div class="w-25">
+                    <Button Type="ButtonType.Link" Size="Size.Medium" Margin="Margin.Is5.FromBottom.Is3" Disabled="(SelectedCategory == 0 || SelectedNumberOfQuestions == 0)" Block="true" Color="Color.Primary" To="@GetRoute()">
+                        Start!
+                    </Button>
+                </div>
+            </div>
+
+        </Div>
+    </Div>

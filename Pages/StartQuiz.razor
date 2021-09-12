@@ -13,42 +13,45 @@ else
 {
     if (!Error.IsError && ShouldRender())
     {
-        <div class="align-items-center container-fluid container bg-light border border-3 border-primary p-3 rounded-3 shadow rounded-3 w-75">
+    <Div Flex="Flex.JustifyContent.Center" Border="Border.Is1.Rounded.Is1.Primary" Margin="Margin.Is0" Background="Background.White" class="shadow">
+        <Div class="w-100" Padding="Padding.Is3">
 
-            <div class="text-center">
-                <h3 class="m-2">@CurrentQuestion.Question</h3>
-            </div>
+            <Div Margin="Margin.Is4.FromTop" Flex="Flex.JustifyContent.Center">
+                <h2>@CurrentQuestion.Question</h2>
+            </Div>
 
-            <Form>
+            <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.SelectedByUser">
+                @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
+                {
+                    <Radio Checked="false" TValue="int" Value="@answerValue.Value" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
+                }
+            </RadioGroup>
 
-                <RadioGroup TValue="int" Name="answers" @bind-CheckedValue="@_questionAnswer.SelectedByUser">
-                    @foreach (KeyValuePair<string, int> answerValue in ShuffleAnswers)
-                    {
-                        <Radio Checked="false" TValue="int" Value="@answerValue.Value" Margin="Blazorise.Margin.Is2" @onclick="EnableButton">@answerValue.Key</Radio><br />
-                    }
-                </RadioGroup>
-
-                <div class="d-flex justify-content-center">
-                    <div class="w-25 m-2">
+                <Div Flex="Flex.JustifyContent.Center">
+                    <div class="w-25">
                         @if (IsLastQuestion)
                         {
-                            <Button Size="Size.Medium" Block="true" Color="Color.Success" Disabled="@(!IsButtonEnable)" @onclick="FinishQuiz"> Finish! </Button>
+
+                            <Button Size="Size.Medium" Block="true" Color="Color.Success" Margin="Margin.Is2.FromBottom.Is3" Disabled="@(!IsButtonEnable)" @onclick="FinishQuiz">
+                                Finish!
+                            </Button>
                         }
                         else
                         {
-                            <Button Size="Size.Medium" Block="true" Color="Color.Primary" Disabled="@(!IsButtonEnable)" @onclick="NextQuestion"> Next! </Button>
+                            <Button Size="Size.Medium" Block="true" Color="Color.Primary" Margin="Margin.Is2.FromBottom.Is3" Disabled="@(!IsButtonEnable)" @onclick="NextQuestion">
+                                Next!
+                            </Button>
                         }
                     </div>
-                </div>
-            </Form>
+                </Div>
 
-            <CascadingValue Value="CurrentQuestionNumber">
-                <CascadingValue Value="IsLastQuestion">
-                    <PersonalizedProgressBarsQuestions @ref="PersonalizedProgressBar" FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
+                <CascadingValue Value="CurrentQuestionNumber">
+                    <CascadingValue Value="IsLastQuestion">
+                        <PersonalizedProgressBarsQuestions @ref="PersonalizedProgressBar" FinisgQuizCallBack="FinishQuiz" NextQuestionCallBack="NextQuestion" NumberOfqustions="@ListQuestions.Count" />
+                    </CascadingValue>
                 </CascadingValue>
-            </CascadingValue>
-
-        </div>
+        </Div>
+    </Div>
     }
     else
     {

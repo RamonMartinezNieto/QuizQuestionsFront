@@ -25,7 +25,6 @@ namespace QuizQuestionsFront.Pages
             } 
         }
 
-
         [Inject]
         private IJSRuntime JsRuntime { get; set; }
 
@@ -37,8 +36,6 @@ namespace QuizQuestionsFront.Pages
         
         [Inject]
         private IRestApiQuestions RestApiQuestions { get; set; }
-
-        private string SelectedItem { get; set; }
 
         public bool ShowResultsOfQuiz { get; set; } = false;
 
@@ -70,12 +67,10 @@ namespace QuizQuestionsFront.Pages
             ShowResultsOfQuiz = !ShowResultsOfQuiz;
         }
 
-
         public void GoBack()
         {
             ShowResultsOfQuiz = !ShowResultsOfQuiz;
         }
-
 
         private async Task<int> GetCategory() 
         {
@@ -88,8 +83,7 @@ namespace QuizQuestionsFront.Pages
 
             foreach (var item in ListOfQuizes) 
             {
-                Console.WriteLine(SelectedItem);
-                if (item.Value.First().DateTime.Equals(SelectedItem)) 
+                if (item.Value.First().DateTime.Equals(dateTimeSelected)) 
                 {
                     foreach (var question in item.Value) 
                     {

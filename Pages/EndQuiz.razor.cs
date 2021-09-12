@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using QuizQuestionsFront.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using QuizQuestionsFront.Services.Storage;
-using System;
 
 namespace QuizQuestionsFront.Pages
 {
@@ -20,12 +17,6 @@ namespace QuizQuestionsFront.Pages
 
         [CascadingParameter]
         public string CategoryName { get; set; }
-
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; }
-
-        [Inject]
-        private ILocalStorage LocalStorage { get; set; }
 
         private List<QuestionAnswer> WrongAnswersList { get; set; } = new List<QuestionAnswer>();
         

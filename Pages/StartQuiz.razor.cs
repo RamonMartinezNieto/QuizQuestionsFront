@@ -154,11 +154,11 @@ namespace QuizQuestionsFront.Pages
         private void FinishQuiz()
         {
             SaveAnsweredQuestion(_questionAnswer);
-            SaveCurrentQuiz();
+            SaveCurrentQuizIntoLocalStorage();
             EndQuizReport = true;
         }
 
-        private async void SaveCurrentQuiz() 
+        private async void SaveCurrentQuizIntoLocalStorage() 
         {
             Dictionary<int, List<QuestionAnswerLocalStorage>> quizesLocalStorage = await LocalStorage.ReadQuizOfCategory(JSRuntime, CategoryName);
 
@@ -179,8 +179,6 @@ namespace QuizQuestionsFront.Pages
                 listWithDataTime.Add(questionLocalStorage);
             }
 
-            //TODO el save aquí me está matando por que no puedo hacer que el componente sea reutilizable
-            // save en local storage
             LocalStorage.SaveQuizes(JSRuntime, quizesLocalStorage, listWithDataTime, CategoryName);
         }
 
