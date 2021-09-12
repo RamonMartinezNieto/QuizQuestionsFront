@@ -1,19 +1,35 @@
-﻿@page "/SessionsTraining/{Category}"
+﻿@page "/SessionsTraining/{CategoryName}"
 
-<h1>@Category</h1>
+<h1>@CategoryName</h1>
 
-<ListGroup Mode="ListGroupMode.Selectable" @bind-SelectedItem="SelectedItem">
+@{int count = 0;}
 
-    @foreach (KeyValuePair<int, List<QuestionAnswerLocalStorage>> item in ListOfQuizes)
-    {
-        <ListGroupItem Name="@item.Value.First().DateTime.ToString()" Color="GetColor(CountIndex)">
-            Quiz realized on @item.Value.First().DateTime
-        </ListGroupItem>
+@if (!ShowResultsOfQuiz)
+{
+    <ListGroup Mode="ListGroupMode.Selectable">
+        @foreach (KeyValuePair<int, List<QuestionAnswerLocalStorage>> item in ListOfQuizes)
+        {
+            <ListGroupItem Name="@item.Value.First().DateTime.ToString()" Color="GetColor(count)" @onclick="@(() => ShowResults(item.Value.First().DateTime))">
+                Quiz realized on @item.Value.First().DateTime
+            </ListGroupItem>
+            count++;
+        }
+    </ListGroup>
+    <div>Item: @SelectedItem</div>
+}
+else
+{
+    <div>Item: @SelectedItem</div>
 
-        CountIndex++;
-    }
-</ListGroup>
+    <div>Cambiamos de panel</div>
+    <Button @onclick="GoBack" Color="Color.Danger">Go back</Button>
 
+    <CascadingValue Value="@GetCategory()">
+        <CascadingValue Value="@CategoryName">
+            <EndQuiz AnswersList="@AnswersList" />
+        </CascadingValue>
+    </CascadingValue>
+}
 <div>
     @SelectedItem
 </div>

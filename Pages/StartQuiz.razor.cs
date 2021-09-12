@@ -8,6 +8,7 @@ using QuizQuestionsFront.Models;
 using Microsoft.JSInterop;
 using QuizQuestionsFront.MockDataManualTesting;
 using QuizQuestionsFront.Services.QuestionsApiRest;
+using QuizQuestionsFront.Services.Storage;
 
 namespace QuizQuestionsFront.Pages
 {
@@ -32,6 +33,9 @@ namespace QuizQuestionsFront.Pages
 
         [Inject]
         private IRestApiQuestions RestApiQuestions { get; set; }
+
+        [Inject]
+        private ILocalStorage LocalStorage { get; set; }
 
         PersonalizedProgressBarsQuestions PersonalizedProgressBar { get; set; }
 
@@ -150,7 +154,34 @@ namespace QuizQuestionsFront.Pages
         private void FinishQuiz()
         {
             SaveAnsweredQuestion(_questionAnswer);
+            SaveCurrentQuiz();
             EndQuizReport = true;
+        }
+
+        private async void SaveCurrentQuiz() 
+        {
+            Dictionary<int, List<QuestionAnswerLocalStorage>> quizesLocalStorage = await LocalStorage.ReadQuizOfCategory(JSRuntime, CategoryName);
+
+            List<QuestionAnswerLocalStorage> listWithDataTime = new();
+
+            foreach (QuestionAnswer questions in AnswersList)
+            {
+                QuestionAnswerLocalStorage questionLocalStorage = new()
+                {
+                    CorrecValueAnswer = questions.CorrecValueAnswer,
+                    DateTime = DateTime.Now,
+                    QuestionId = questions.QuestionId,
+                    QuestionName = questions.QuestionName,
+                    SelectedByUser = questions.SelectedByUser,
+                    ShuffleAnswersList = questions.ShuffleAnswersList
+                };
+
+                listWithDataTime.Add(questionLocalStorage);
+            }
+
+            //TODO el save aquí me está matando por que no puedo hacer que el componente sea reutilizable
+            // save en local storage
+            LocalStorage.SaveQuizes(JSRuntime, quizesLocalStorage, listWithDataTime, CategoryName);
         }
 
         private async Task CheckSelected() =>

@@ -29,6 +29,19 @@ namespace QuizQuestionsFront.Services.QuestionsApiRest
             }
         }
 
+        public async Task<int> GetCategoryId(IHttpClientFactory ClientFactory, string categoryName) 
+        {
+            var client = ClientFactory.CreateClient("QuestionsApi");
+            try
+            {
+                return await client.GetFromJsonAsync<int>($"/Category/Id/{categoryName}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception requesting to the API the categories", ex);
+            }
+        }
+
         public async Task<int> GetQuantityOfQuestions(IHttpClientFactory ClientFactory, int categoryToRequest) 
         {
             var client = ClientFactory.CreateClient("QuestionsApi");

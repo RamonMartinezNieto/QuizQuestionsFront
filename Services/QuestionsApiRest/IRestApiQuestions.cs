@@ -12,5 +12,8 @@ namespace QuizQuestionsFront.Services.QuestionsApiRest
         public Task<int> GetQuantityOfQuestions(IHttpClientFactory ClientFactory, int categoryToRequest);
 
         public Task<List<QuestionModel>> GetQuestions(IHttpClientFactory ClientFactory, int category, int numberOfQuestions);
+
+        public Task<int> GetCategoryId(IHttpClientFactory ClientFactory, string categoryName);
+
     }
 }
