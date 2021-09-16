@@ -1334,3 +1334,5 @@ F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\b
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\build-gz\Ms6PCvl2.gz
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\build-gz\veCmAnOJ.gz
 F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\QuizQuestionsFront.csproj.AssemblyReference.cache
+F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\RazorDeclaration\Pages\GitHubComponent.razor.g.cs
+F:\MyHome\SimpleQuestionsProject\Front-end\QuizQuestionsFront\obj\Debug\net5.0\Razor\Pages\GitHubComponent.razor.g.cs

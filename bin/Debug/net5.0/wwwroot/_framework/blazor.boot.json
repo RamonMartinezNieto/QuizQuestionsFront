@@ -201,11 +201,11 @@
       "mscorlib.dll": "sha256-9AZ7YsJz\/p2gr4E0EQXdHBqwDxoXqtzxhqC6aRsa2K8=",
       "netstandard.dll": "sha256-yOOty6BTX3e57YAEHK5a4nku\/lj0vi7jg\/eQZAjbDQk=",
       "System.Private.CoreLib.dll": "sha256-rraBQp6NevIQiELPVfDFDl5pv9QVJqCiZhB5bkpiZ88=",
-      "QuizQuestionsFront.dll": "sha256-67wnp5YQQiZSpb8BZpPDjlI4jn+f6fNunzJ1ZiJ1KgY="
+      "QuizQuestionsFront.dll": "sha256-mXKV5SNXPPVtnLJm99LaceWlDav+udwH4u6mlf1VuXg="
     },
     "lazyAssembly": null,
     "pdb": {
-      "QuizQuestionsFront.pdb": "sha256-C8hM1mKQguFHhjCyj6D01m3R2pCNrbE1uSCxp3wY9Mo="
+      "QuizQuestionsFront.pdb": "sha256-hIXEC3sHovz2bXH2zSbc3GAFZd3w+Jer92FfWURt1Ho="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",
